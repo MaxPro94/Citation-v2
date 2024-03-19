@@ -19,7 +19,7 @@
                         <br>
                         <br>
                         <p class="card-text"><small class="text-body-secondary"><?= $resultat['date_start'] . ' ' . '/' . ' ' . $resultat['date_end'] ?></small></p>
-                        <a href="details_auteur.php?id=<?= $resultat['id_auteur'] ?>" class="btn btn-primary">Détails</a>
+                        <a href="?page=details_auteur&id=<?= $resultat['id_auteur'] ?>" class="btn btn-primary">Détails</a>
                     </div>
                 </div>
             </div>

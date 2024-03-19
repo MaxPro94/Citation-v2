@@ -23,4 +23,4 @@
         </div>
     </div>
 </div>
-<script src="./public/assets/js/progress-bar.js"></script>
+<script src="assets/js/progress-bar.js"></script>

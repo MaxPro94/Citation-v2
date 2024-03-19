@@ -40,4 +40,6 @@ if (isset($_SESSION['user_id'])) {
     if ($droit === 3) {
         $droit = "Oratores (Hommes pieux, le clergé).";
     }
+} else {
+    header('Location: ?page=connexion');
 }
