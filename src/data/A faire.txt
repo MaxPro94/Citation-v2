@@ -1,0 +1,16 @@
+1) Avec un type de compte particulier pouvoir ajouter des citations
+	-Création d'une page ajout citation
+	-Liste déroulantes pour le choix de l'auteur ou rajouter un auteur
+	-4 Champs requis pour une citation :
+		-La citation
+		-Sont explication
+		-Année
+		-L'id de l'auteur 
+
+2) Pouvoir ajouter des citations en favori et les voirs sur la page compte
+	-Création d'une table de relation (utilisateur_citation)
+	-Un utilisateur peut ajouter 0 ou n citations et une citation peut être mise en favorit par 0 ou n utilisateurs.
+	-Ajout d'un boutton sur chaque card représentant une citation.
+	-JS OU PHP ?
+
+3) Envoie d'un e-mail de confirmation
