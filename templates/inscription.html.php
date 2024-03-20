@@ -78,7 +78,7 @@
                 <button id="btn" type="submit" class="btn btn-primary" name="submit_login_inscription">Inscription</button>
             </form>
             <br>
-            <a class="btn btn-primary" href="connexion.php">Vous avez déjà un compte ?</a>
+            <a class="btn btn-primary" href="?page=connexion">Vous avez déjà un compte ?</a>
         </div>
         <?php if (isset($errors['mail_already_exist'])) : ?>
             <div class="col-12 col-md-4 text-danger">
