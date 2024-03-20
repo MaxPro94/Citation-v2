@@ -14,23 +14,25 @@ const mail_word = '@' // Mise en place de cette variable afin de contrôler l'e-
 
 const mail_word2 = '.'
 
+let btn_submit = document.querySelector('#btn')
+
 // Je définit les caractères spéciaux demander pour le mot de passe
 const pwd_car = ['!', '*', '&', '$', '#', '%', '&', '_', '-', '+']
 
-let submit_btn = document.querySelector('#btn')
+
 
 
 // Je vérifie si l'e-mail renseigner comporte bien un @ et si il existe déjà en BDD.
 mail_user.addEventListener("blur", function(e){
-    if(mail_user.value.includes(mail_word,  mail_word2)){
+    if(mail_user.value.includes(mail_word) && mail_user.value.includes(mail_word2)){
         document.querySelector('#succes_mail').innerHTML = "L'e-mail est valide"
         document.querySelector('#alert_mail').innerHTML = ""
-        fetch('?page=controle_inscri&mail=' + this.value)
+        fetch('/api.php?action=check-user&mail=' + this.value)
         .then(function(response){
             return response.json()
         })
         .then(function(resultat){
-            if(resultat[0].nb == 1){
+            if(resultat.nb == 1){
                 console.log(resultat)
                 document.querySelector('#succes_mail').innerHTML = ""
                 document.querySelector('#alert_mail').innerHTML = "Cet e-mail est déjà enregistrer"
@@ -82,7 +84,7 @@ pseudo_user.addEventListener("blur", function(){
 
 
 // Vérification si le mot de passe comporte bien un des caractère spécial demander.
-pwd_user.addEventListener("blur", function(){
+pwd_user2.addEventListener("blur", function(){
     if(pwd_user.value.length < 8 ){
         document.querySelector('#alert_pwd').innerHTML = "Le mot de passe doit comporter un minimum de 8 caractères"
         document.querySelector('#succes_pwd').innerHTML = ""
@@ -90,6 +92,15 @@ pwd_user.addEventListener("blur", function(){
         if(pwd_car.some(word => pwd_user.value.includes(word))){ // some() verifie si il y'a au moins une des valeurs du tableau pwd_car dans le mot de passe utilisateur
             document.querySelector('#succes_pwd').innerHTML = "Le mot de passe est accépté"
             document.querySelector('#alert_pwd').innerHTML = ""
+
+            if(pwd_user.value === pwd_user2.value){
+                document.querySelector('#succes_pwd').innerHTML = "Les mots de passes sont identiques"
+                document.querySelector('#alert_pwd').innerHTML = ""
+        
+            } else {
+                document.querySelector('#alert_pwd').innerHTML = "Les mots de passe ne sont pas identiques !"
+                document.querySelector('#succes_pwd').innerHTML = ""
+            }
         } else {
             document.querySelector('#alert_pwd').innerHTML = "Le mot de passe doit comporté au minimum un des caractères suivant: !, *, &, $, #, %, &, _, -, +"
             document.querySelector('#succes_pwd').innerHTML = ""
@@ -99,17 +110,16 @@ pwd_user.addEventListener("blur", function(){
 })
 
 // Vérification si les deux mot de passe sont identiques.
-submit_btn.addEventListener("click", function(e){
+btn_submit.addEventListener("click", function(e){
     e.preventDefault() // On demande a js de ne pas utiliser le btn submit comme il le fait par défaut.
 
-    if(pwd_user.value === pwd_user2.value){
-        document.querySelector('#succes_pwd').innerHTML = "Les mots de passes sont identiques"
-        document.querySelector('#alert_pwd').innerHTML = ""
+    if(mail_user !== null && lastname_user !== null && firstname_user !== null && pseudo_user !== null && pwd_user !== null && pwd_user2 !== null ){
         document.querySelector('#form_inscription').submit()
+        document.querySelector('#alert_form').innerHTML = ""
     } else {
-        document.querySelector('#alert_pwd').innerHTML = "Les mots de passe ne sont pas identiques !"
-        document.querySelector('#succes_pwd').innerHTML = ""
+        document.querySelector('#alert_form').innerHTML = "Veuillez renseigner tout les champs"
     }
+
     
 })
 

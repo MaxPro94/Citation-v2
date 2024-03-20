@@ -85,6 +85,8 @@
                 <?= $errors['mail_already_exist'] ?>
             </div>
         <?php endif ?>
+        <span class="text-danger mb-1" id="alert_form"></span>
+        <span class="text-success" id="succes_form"></span><br>
     </div>
 </div>
 <script src="assets/js/controle_inscri.js"></script>

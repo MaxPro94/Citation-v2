@@ -6,3 +6,5 @@ $requete->execute();
 $resultat = $requete->fetch();
 
 echo json_encode($resultat);
+
+var_dump($resultat);

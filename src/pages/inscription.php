@@ -5,6 +5,7 @@ $title = "Inscription";
 // Si $_POST['submit_login_inscription'] existe (Donc quand l'utilisateur appuie sur le submit)
 if (isset($_POST['submit_login_inscription'])) {
 
+
     // On créer une variable qui contiendras un tableau qui contiendras les messages d'erreurs.
     $errors = [];
 
@@ -88,7 +89,7 @@ if (isset($_POST['submit_login_inscription'])) {
                     $_SESSION['user_id'] = $utilisateur['id_utilisateur'];
                     $_SESSION['name'] = $utilisateur['nom_compte'];
                     // Nous redirigons l'utilisateur sur la page d'acceuil.
-                    header('Location: home.php');
+                    header('Location: index.php');
                     exit;
                 } else {
                     $errors['insert'] = "Un problème est survenu lors de l'insertion des données.";
