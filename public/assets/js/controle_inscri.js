@@ -114,7 +114,7 @@ btn_submit.addEventListener("click", function(e){
     e.preventDefault() // On demande a js de ne pas utiliser le btn submit comme il le fait par défaut.
 
     if(mail_user !== null && lastname_user !== null && firstname_user !== null && pseudo_user !== null && pwd_user !== null && pwd_user2 !== null ){
-        document.querySelector('#form_inscription').submit()
+        document.querySelector('#form_inscription').submit();
         document.querySelector('#alert_form').innerHTML = ""
     } else {
         document.querySelector('#alert_form').innerHTML = "Veuillez renseigner tout les champs"

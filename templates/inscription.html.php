@@ -75,7 +75,8 @@
                 <?php endif ?>
                 <span class="text-danger mb-1" id="alert_pwd"></span>
                 <span class="text-success" id="succes_pwd"></span><br>
-                <button id="btn" type="submit" class="btn btn-primary" name="submit_login_inscription">Inscription</button>
+                <button id="btn" class="btn btn-primary" type="submit" name="submit_login_inscription">Inscription</button>
+                <input type="hidden" name="submit_login_inscription" value="1" />
             </form>
             <br>
             <a class="btn btn-primary" href="?page=connexion">Vous avez déjà un compte ?</a>
