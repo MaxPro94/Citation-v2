@@ -18,7 +18,7 @@
                     <br>
                     <button type="submit" class="btn btn-primary" name="submit_login_connex">Connexion</button>
                     <a class="btn btn-primary my-2" href="?page=inscription">Vous n'avez pas de compte ?</a>
-                    <a class="btn btn-primary my-2" href="?page=home">Continuer en tant que visiteur.</a>
+                    <a class="btn btn-primary my-2" href="?page=index">Continuer en tant que visiteur.</a>
                 </form>
 
             </div>
