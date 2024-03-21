@@ -124,3 +124,12 @@ btn_submit.addEventListener("click", function(e){
 })
 
 
+// Afin de generaliser la verification des input pour voir si ils sont vides:
+
+// Ajouter un data-required sur chaque input a traiter
+// Faire un querySelector de ces data-required
+// Faire un foreach des ceux-ci
+// Si le data-required est vide appliquer une class sur cet element que nous appelerons erreurs
+// Cette class nous la traiterons en CSS
+// Ne pas oublier d'enlever la class erreur si l'utilisateur change la donnée de l'input
+
