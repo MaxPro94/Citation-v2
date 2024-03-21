@@ -27,12 +27,12 @@ mail_user.addEventListener("blur", function(e){
     if(mail_user.value.includes(mail_word) && mail_user.value.includes(mail_word2)){
         document.querySelector('#succes_mail').innerHTML = "L'e-mail est valide"
         document.querySelector('#alert_mail').innerHTML = ""
-        fetch('/api.php?action=check-user&mail=' + this.value)
-        .then(function(response){
-            return response.json()
+        fetch('/api.php?action=check-user&mail=' + this.value) // Pour que les datas soit reçus dans le bon format nous passons par api.php qui traiteras l'information différement de index.php
+        .then(function(response){ // Le retour du fetch nous l'appelerons response
+            return response.json() // Nous lui donnons le format dans lequel il doit interpréter les data 
         })
-        .then(function(resultat){
-            if(resultat.nb == 1){
+        .then(function(resultat){ // Une fois l'interprétation faite nous lui donnerons le nom de resultat
+            if(resultat.nb == 1){ // Et nous commencerons les vérification en mentionnons cette "variable" resultat.
                 console.log(resultat)
                 document.querySelector('#succes_mail').innerHTML = ""
                 document.querySelector('#alert_mail').innerHTML = "Cet e-mail est déjà enregistrer"
@@ -111,10 +111,10 @@ pwd_user2.addEventListener("blur", function(){
 
 // Vérification si les deux mot de passe sont identiques.
 btn_submit.addEventListener("click", function(e){
-    e.preventDefault() // On demande a js de ne pas utiliser le btn submit comme il le fait par défaut.
+    e.preventDefault() // On demande a js de ne pas utiliser le btn submit comme il le fait par défaut. !!! Cette technique empeche le button de type submit avec un nom d'être envoyer.
 
     if(mail_user !== null && lastname_user !== null && firstname_user !== null && pseudo_user !== null && pwd_user !== null && pwd_user2 !== null ){
-        document.querySelector('#form_inscription').submit();
+        // document.querySelector('#form_inscription').submit(); // Même en réactivant le submit le $_POST['submit_button_login'] ne serra pas envoyer. Les button et les input de type submit avec un nom ne seront plus interpreter. 
         document.querySelector('#alert_form').innerHTML = ""
     } else {
         document.querySelector('#alert_form').innerHTML = "Veuillez renseigner tout les champs"
