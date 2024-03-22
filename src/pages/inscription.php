@@ -27,7 +27,7 @@ if (isset($_POST['submit_login_inscription'])) {
             $errors['email'] = "Le champs e-mail doit être renseigner avec un e-mail valide.";
         }
 
-        if (empty($pseudo) && strlen($pseudo) <= 1) {
+        if (empty($pseudo) || strlen($pseudo) <= 1) {
             $errors['pseudo'] = "Veuillez renseigner un pseudo de plus d'un caractère.";
         }
 
@@ -62,7 +62,6 @@ if (isset($_POST['submit_login_inscription'])) {
             $requete_mail_user = $dbh->prepare("SELECT COUNT(*) AS nb FROM utilisateur WHERE mail = '$mail'");
             $requete_mail_user->execute();
             $verif_mail_user = $requete_mail_user->fetch();
-            var_dump($verif_mail_user);
 
 
             if ($verif_mail_user['nb'] > 0) { // Si la variable est true cela veut dire que l'email renseigner est déjà enregistrer en BDD.
