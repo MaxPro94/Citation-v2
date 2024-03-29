@@ -16,6 +16,7 @@ if (file_exists($path)) { // Il verifie si le fichier existe bien en utilisant l
     require '../src/data/db-connect.php'; // Si il est bien existant, ce connecter a la bdd
     require $path; // Utiliser le chemin $path
     require '../templates/layout.html.php'; // Utiliser le templates général layout dans lequel nous feront un require de la page demander.
+
 } else {
     header('HTTP/1.1 500 No Record Found'); // Si aucune page n'existe, renvoyer l'utilisateur vers une page d'erreur
 }

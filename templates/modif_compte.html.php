@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row d-flex justify-content-center my-5">
-        <h2 class="text-center my-3">Modification des informations du compte</h2>
+        <h2 class="text-center text-light my-3">Modification des informations du compte</h2>
         <div class="col-6">
-            <form class="my-5" action="" method="POST">
+            <form class="my-5 text-light" action="" method="POST">
                 <div class="mb-3">
                     <label for="disabledTextInput" class="form-label">Prénom :</label>
                     <input type="text" id="prenom" name="prenom" class="form-control" placeholder="<?= $prenom ?>">
@@ -48,18 +48,20 @@
                 </div>
             </form>
         </div>
+        <hr>
     </div>
+
     <div class="row">
-        <h2 class="text-center mb-4">Modification de l'image de profil</h2>
+        <h2 class="text-center mb-4 text-light">Modification de l'image de profil</h2>
         <?php foreach ($resultat_img_profil as $resultat) : ?>
             <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div id="card-home" class="card h-100" data-aos="">
+                <div class="card h-100 bg-dark text-light" data-aos="">
                     <img src="<?= $resultat['img'] ?>" class="card-img-top img-fluid" alt="">
                     <div class="card-body">
                         <h3><?= $resultat['nom'] ?></h3>
                         <p class="text-center mt-4"><?= $resultat['description'] ?></p>
                     </div>
-                    <div class="card-footer text-center">
+                    <div class="card-footer text-center border-secondary">
                         <form method="POST">
                             <button class="btn btn-warning" name="submit_modif_img" value="<?= $resultat['id_img'] ?>">Choisir</button>
                         </form>

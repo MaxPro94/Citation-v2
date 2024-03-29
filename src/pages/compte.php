@@ -1,5 +1,6 @@
 <?php
 
+require "../src/actions/check_fav.php";
 session_start();
 
 $title = "Mon compte";
@@ -39,6 +40,35 @@ if (isset($_SESSION['user_id'])) {
     }
     if ($droit === 3) {
         $droit = "Oratores (Hommes pieux, le clergé).";
+    }
+
+    $requete_fav = $dbh->prepare("SELECT * FROM favoris JOIN citations JOIN auteur WHERE id_user = :id_user AND favoris.id_citation = citations.id_citations AND citations.id_auteur = auteur.id_auteur");
+    $requete_fav->execute([
+        'id_user' => $_SESSION['user_id']
+    ]);
+    $resultat_fav = $requete_fav->fetchAll();
+
+    if (isset($_POST['submit_fav'])) {
+        $id_citation = $_POST['submit_fav'];
+        $id_user = $_SESSION['user_id'];
+
+        $requete = $dbh->prepare("INSERT INTO favoris (id_user, id_citation) VALUES (:id_user, :id_citation)");
+        $requete->execute([
+            'id_user' => $id_user,
+            'id_citation' => $id_citation
+        ]);
+        header("Refresh: 0");
+    }
+    if (isset($_POST['delete_fav'])) {
+        $id_citation = $_POST['delete_fav'];
+        $id_user = $_SESSION['user_id'];
+
+        $requete = $dbh->prepare("DELETE FROM favoris WHERE id_user = :id_user AND id_citation = :id_citation ");
+        $requete->execute([
+            'id_user' => $id_user,
+            'id_citation' => $id_citation
+        ]);
+        header("Refresh: 0");
     }
 } else {
     header('Location: ?page=connexion');

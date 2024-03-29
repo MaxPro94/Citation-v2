@@ -10,5 +10,5 @@ setInterval(() => {
     start += step;
     sec += 1;
     bar.style.width = start + '%';
-    bar.innerHTML = sec + ' sec';
+
 }, 1000);

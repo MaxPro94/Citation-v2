@@ -1,26 +1,59 @@
-<div class="bg-image" style="background-image: url('/assets/img/temple.bak.jpg'); width: 100%">
-    <div class="container">
-
-        <div class="row justify-content-center">
-
-            <div class="col-12 col-md-6 my-5">
-                <div class="card">
-                    <img src="<?= $photoAuteur ?>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">"<?= $citation ?>"</h5>
-                        <p class="font-weight-bold"><?= $nomAuteur ?></p>
-                        <p class="font-weight-bold"><?= $naissanceAuteur . ' ' . '/' . ' ' . $mortAuteur ?></p>
-                        <a href="?page=details&id=<?= $id_auteur ?>&id_citation=<?= $id_citation ?>" class="btn btn-primary">Détails</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="progress" id="blips">
-                    <div class="progress-bar" role="progressbar">
-                        <span class="sr-only"></span>
-                    </div>
+<div class="container h-100 my-5">
+    <div class="row">
+        <div class="col-6 col-md-6 my-5 justify-content-around">
+            <div class="card">
+                <img src="<?= $photoAuteur ?>" class="rounded" alt="...">
+            </div>
+            <hr>
+            <div class="progress" id="blips">
+                <div class="progress-bar bg-dark" role="progressbar">
+                    <span class="sr-only "></span>
                 </div>
             </div>
         </div>
+        <div class="col my-5">
+            <table class="mx-5 text-light">
+                <thead>
+                    <tr>
+                        <th scope="row" class="display-5 py-5"><?= $nomAuteur ?></th>
+                    </tr>
+                </thead>
+                <br>
+                <tbody>
+                    <tr>
+                        <td class="py-3 display-8">" <?= $citation ?> "</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="py-2"><?= $naissanceAuteur . ' ' . '/' . ' ' . $mortAuteur ?></td>
+                    </tr>
+                    <tr>
+                        <td class="py-3"><a href="?page=details&id=<?= $id_auteur ?>&id_citation=<?= $id_citation ?>" class="btn btn-dark ">Détails et vulgarisation</a></td>
+                        <?php if (isset($_SESSION['user_id'])) : ?>
+                            <?php if (in_fav($id_citation, $resultat_fav)) : ?>
+                                <td>
+                                    <form class="d-inline" method="POST">
+                                        <button type="submit" name="delete_fav" class="btn" value="<?= $id_citation ?>"> <span class="material-symbols-outlined text-warning py-2">
+                                                stars
+                                            </span></button>
+                                </td>
+                                </form>
+                            <?php else : ?>
+                                <td>
+                                    <form class="d-inline" method="POST">
+                                        <button type="submit" name="submit_fav" class="btn d-inline" value="<?= $id_citation ?>"><span class="material-symbols-outlined text-warning py-2">
+                                                star
+                                            </span></button>
+                                </td>
+                                </form>
+                            <?php endif ?>
+                        <?php endif ?>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
     </div>
 </div>
-<script src="assets/js/progress-bar.js"></script>
+
+<script class="mb-5" src="assets/js/progress-bar.js"></script>

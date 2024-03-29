@@ -1,10 +1,10 @@
 <div class="container">
-    <h1 class="my-5">Les philosophes</h1>
+    <h1 class=" text-white py-5">Les philosophes</h1>
 
     <?php foreach ($resultats as $resultat) : ?>
 
-        <div class="card mb-3 my-5">
-            <div class="row g-0">
+        <div class="card bg-dark text-white mb-3 my-5 border">
+            <div class="row">
                 <div class="col-md-4">
                     <img src="<?= $resultat['photo'] ?>" class="img-fluid rounded-start" alt="...">
                 </div>
@@ -18,8 +18,8 @@
                         <p class="card-text"><?= $resultat['description'] ?></p>
                         <br>
                         <br>
-                        <p class="card-text"><small class="text-body-secondary"><?= $resultat['date_start'] . ' ' . '/' . ' ' . $resultat['date_end'] ?></small></p>
-                        <a href="?page=details_auteur&id=<?= $resultat['id_auteur'] ?>" class="btn btn-primary">Détails</a>
+                        <p class="card-text"><small class="text-light"><?= $resultat['date_start'] . ' ' . '/' . ' ' . $resultat['date_end'] ?></small></p>
+                        <a href="?page=details_auteur&id=<?= $resultat['id_auteur'] ?>" class="btn btn-light">Détails</a>
                     </div>
                 </div>
             </div>

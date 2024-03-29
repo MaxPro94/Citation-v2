@@ -87,6 +87,10 @@ if (isset($_POST['submit_modif_pseudo'])) {
         $erreurs['pseudo'] = "Veuillez entrer un pseudo de plus d'un caractère";
     }
 
+    if (empty($_POST['pseudo']) || strlen($_POST['pseudo']) > 15) {
+        $erreurs['pseudo'] = "Veuillez entrer un pseudo de maximum 15 caractères";
+    }
+
     $requete1 = $dbh->prepare("SELECT nom_compte FROM utilisateur WHERE id_utilisateur = :id_utilisateur");
     $requete1->execute([
         'id_utilisateur' => $_SESSION['user_id']
