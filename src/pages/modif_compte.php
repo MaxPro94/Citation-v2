@@ -174,4 +174,11 @@ if (isset($_POST['submit_modif_img'])) {
         'img_profil' => $_POST['submit_modif_img'],
         'id_utilisateur' => $_SESSION['user_id']
     ]);
+
+    $requete = $dbh->prepare("SELECT * FROM image_user WHERE id_img = :id_img");
+    $requete->execute([
+        'id_img' => $_POST['submit_modif_img']
+    ]);
+    $resultat_img = $requete->fetch();
+    $_SESSION['img'] = $resultat_img['img'];
 }
