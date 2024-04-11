@@ -13,7 +13,7 @@
         </div>
         <div class="card text-bg-dark mb-3 my-4">
             <div class="card-header">
-                <h5 class="card-title"><?= $resultat_citation['citation'] ?></h5>
+                <h5 class="card-title">"<?= $resultat_citation['citation'] ?>"</h5>
             </div>
             <div class="card-body">
                 <p class="card-text"><?= $resultat_citation['explication'] ?></p>

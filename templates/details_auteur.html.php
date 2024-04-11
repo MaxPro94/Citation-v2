@@ -18,7 +18,7 @@
                 <h5 class="card-title"><?= $resultatAuteur['prenom'] . ' ' . $resultatAuteur['nom'] ?></h5>
             </div>
             <div class="card-body">
-                <p><?= $resultat['citation'] ?></p>
+                <p>"<?= $resultat['citation'] ?>"</p>
                 <br>
                 <p class="card-text"><?= $resultat['explication'] ?></p>
                 <?php if (isset($_SESSION['user_id'])) : ?>

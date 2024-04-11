@@ -8,7 +8,7 @@
 
             </div>
             <div class="card-body border">
-                <p><?= $resultat['citation'] ?></p>
+                <p>"<?= $resultat['citation'] ?>"</p>
                 <br>
                 <p class="card-text"><?= $resultat['explication'] ?></p>
                 <?php if (isset($_SESSION['user_id'])) : ?>
@@ -45,7 +45,7 @@
                 <?php endfor; ?>
 
                 <li class="page-item <?= $currentPage + 1 > $nbPages ? 'disabled' : '' ?>">
-                    <a class="page-link" href="<?= !empty($search) ? '/?search=' . $search . '&page=' . $currentPage + 1 : '/?page=' . $currentPage + 1 ?>" aria-label="Next">
+                    <a class="page-link" href="<?= !empty($search) ? '/index.php' . $search . '?page=' . $currentPage + 1 : '/?page=' . $currentPage + 1 ?>" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>

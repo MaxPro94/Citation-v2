@@ -1,11 +1,3 @@
-1) Avec un type de compte particulier pouvoir ajouter des citations
-	-Création d'une page ajout citation
-	-Liste déroulantes pour le choix de l'auteur ou rajouter un auteur
-	-4 Champs requis pour une citation :
-		-La citation
-		-Sont explication
-		-Année
-		-L'id de l'auteur 
+1) Mot de passe oublié
 
-
-3) Envoie d'un e-mail de confirmation
+2) Envoie d'un e-mail de confirmation a l'inscription
