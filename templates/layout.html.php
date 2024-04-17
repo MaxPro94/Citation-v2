@@ -4,73 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image" href="assets/img/logo/MetaMind144">
     <title><?= $title ?? '' ?></title>
     <!-- Connexion a CSS, n'oublions pas que la racin est la page inde.php qui ce trouve dans le dossier Public. -->
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Connexion a bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..<link rel=" stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 
-<body class="h-100" style="background: linear-gradient(180deg, rgba(33,37,41,1) 0%, rgba(33,37,41,1) 16%, rgba(194,194,194,1) 100%); height: auto">
-    <nav class="navbar navbar-expand-lg bg-dark">
+<body class="background: linear-gradient(180deg, rgba(33,37,41,1) 10%, rgba(33,37,41,1) 16%, rgba(194,194,194,1) 100%); height: 100%">
+    <nav class=" navbar navbar-expand-lg bg-dark">
+        <img src="assets/img/logo/MetaMind144" width="80" height="80" class="d-inline-block align-top border-secondary rounded mx-2" alt="">
         <div class="container-fluid">
-            <?php if (isset($_SESSION['user_id'])) : ?> <!-- Si la session contient un user_id -->
-                <a class="navbar-brand text-white">Well, hello <?= $_SESSION['name'] ?></a>
-            <?php endif ?>
+            <?php if (empty($_GET) || $_GET == 'index') : ?>
+                <?php if (isset($_SESSION['user_id'])) : ?> <!-- Si la session contient un user_id -->
+                    <a class="navbar-brand text-white ml-4">Well, hello <?= $_SESSION['name'] ?></a>
+                <?php endif ?>
+                <?php if (!isset($_SESSION['user_id'])) : ?> <!-- Si la session contient un user_id -->
+                    <a class="navbar-brand text-white">Well, hello buddy</a>
+                <?php endif; ?>
+            <?php endif; ?>
             <?php if (!isset($_SESSION['user_id'])) : ?> <!-- Si la session contient un user_id -->
-                <a class="navbar-brand text-white">Well, hello buddy</a>
+                <a class="mx-5 nav-link text-secondary" href="?page=connexion">Crée-toi un compte pour enregistrer tes citations favorites et bien plus !</a>
             <?php endif ?>
-            <?php if (isset($_SESSION['user_id'])) : ?> <!-- Si la session contient un user_id -->
-                <img src="<?= $_SESSION['img'] ?>" width="50" height="50" class="d-inline-block align-top border-secondary rounded mx-2" alt="">
-            <?php endif ?>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active mx-1 text-white" aria-current="page" href="?page=index">Acceuil</a>
-                    <a class="nav-link mx-1 text-white" href="?page=citations">Les citations</a>
-                    <a class="nav-link mx-1 text-white" href="?page=auteurs">Les philosophes</a>
+                    <a class="btn btn-outline-warning mx-2" aria-current="page" href="?page=index">Acceuil</a>
+                    <a class="btn btn-outline-warning mx-2" href="?page=citations">Les citations</a>
+                    <a class="btn btn-outline-warning mx-2" href="?page=auteurs">Les philosophes</a>
                     <?php if (!isset($_SESSION['user_id'])) : ?>
-                        <a href="?page=inscription" id="hover" class="nav-link text-white">Inscription</a>
-                        <a href="?page=connexion" id="hover" class="nav-link text-white">Connexion</a>
+                        <a href="?page=inscription" id="hover" class="btn btn-outline-warning mx-2">Inscription</a>
+                        <a href="?page=connexion" id="hover" class="btn btn-outline-warning mx-2">Connexion</a>
                     <?php endif ?>
                     <?php if (isset($_SESSION['user_id'])) : ?>
-                        <a class="nav-link mx-1 text-white" href="?page=compte">Mon compte</a>
+                        <a class="btn btn-outline-warning mx-2" href="?page=compte">Mon compte</a>
+                    <?php endif ?>
+                    <?php if (isset($_SESSION['id_droit']) && $_SESSION['id_droit'] == 1) : ?>
+                        <a class="btn btn-outline-warning mx-2" href="?page=ajout_citation">Ajouter une citation</a>
                     <?php endif ?>
                     <?php if (isset($_SESSION['user_id'])) : ?>
-                        <a class="nav-link mx-1 text-white" href="?page=deconnexion">Déconnexion</a>
+                        <a class="btn btn-outline-danger mx-2 text-warning" href="?page=deconnexion">Déconnexion</a>
                     <?php endif ?>
-                    <?php if (!isset($_SESSION['user_id'])) : ?> <!-- Si la session contient un user_id -->
-                        <a class="mx-5 nav-link text-secondary" href="?page=connexion">Crée-toi un compte pour enregistrer tes citations favorites et bien plus !</a>
-                    <?php endif ?>
-
                 </div>
             </div>
+            <?php if (isset($_SESSION['user_id'])) : ?> <!-- Si la session contient un user_id -->
+                <img src="<?= $_SESSION['img'] ?>" width="75" height="75" class="d-inline-block align-top border-secondary rounded mx-2" alt="">
+            <?php endif ?>
         </div>
     </nav>
+
+
+
+
     <div>
 
-
-
-
-        <div>
-
-            <?php require "$page.html.php" ?> <!-- Ici nous faisont un appel au nom de la page contenu dans $_GET en y ajoutant le .html afin de récupérer uniquement le fichier qui s'occupe de l'affichage. -->
-
-        </div>
-
-
+        <?php require "$page.html.php" ?> <!-- Ici nous faisont un appel au nom de la page contenu dans $_GET en y ajoutant le .html afin de récupérer uniquement le fichier qui s'occupe de l'affichage. -->
 
     </div>
-    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+
 
 </body>
+<script src="bootstrap/dist/js/bootstrap.js"></script>
 
 </html>

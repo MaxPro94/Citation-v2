@@ -1,18 +1,18 @@
-<div class="container h-100 my-5">
-    <div class="row">
-        <div class="col-6 col-md-6 my-5 justify-content-around">
+<div class="container mb-5">
+    <div class="row mb-5">
+        <div class="col-xl-6 col-sm-4 my-5 justify-content-around">
             <div class="card">
                 <img src="<?= $photoAuteur ?>" class="rounded" alt="...">
             </div>
             <hr>
             <div class="progress" id="blips">
-                <div class="progress-bar bg-dark" role="progressbar">
+                <div class="progress-bar bg-dark progress-bar-striped" role="progressbar">
                     <span class="sr-only "></span>
                 </div>
             </div>
         </div>
         <div class="col my-5">
-            <table class="mx-5 text-light">
+            <table class="mx-5 mb-5 text-light">
                 <thead>
                     <tr>
                         <th scope="row" class="display-5 py-5"><?= $nomAuteur ?></th>
@@ -56,4 +56,4 @@
     </div>
 </div>
 
-<script class="mb-5" src="assets/js/progress-bar.js"></script>
+<script src="assets/js/progress-bar.js"></script>

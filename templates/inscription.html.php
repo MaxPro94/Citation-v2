@@ -1,94 +1,89 @@
 <div class="container">
-    <div class="row justify-content-center my-2">
-        <div class="col-12 col-md-4 my-5 py-4">
-            <h1 class="text-white">Well hello buddy !</h1>
-            <form method="POST" id="form_inscription">
-                <label for="lastname" class="form-label text-decoration-underline text-white">Entrez votre nom :</label>
-                <input required type="text" class="form-control" name="lastname" id="lastname" placeholder="Aurèlius" value="">
-                <?php if (isset($errors)) : ?>
-                    <span class="my-1 text-danger">
-                        <?= $errors['nom'] ?>
-                    </span>
-                <?php endif ?>
-                <span class="text-danger" id="alert_lastname"></span>
-                <span class="text-success" id="succes_lastname"></span><br>
-
-                <label for="firstname" class="form-label text-decoration-underline text-white">Entrez votre prenom :</label>
-                <input required type="text" class="form-control" name="firstname" id="firstname" placeholder="Marcus">
-                <?php if (isset($errors['prenom'])) : ?>
-                    <span class="my-1 text-danger">
-                        <?= $errors['prenom'] ?>
-                    </span>
-                <?php endif ?>
-                <span class="text-danger" id="alert_firstname"></span>
-                <span class="text-success" id="succes_firstname"></span><br>
-
-                <label for="pseudo" class="form-label text-decoration-underline text-white">Entrez votre pseudo :</label>
-                <input required type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Marcus-Aurelius">
-                <?php if (isset($errors['pseudo'])) : ?>
-                    <span class="my-1 text-danger">
-                        <?= $errors['pseudo'] ?>
-                    </span>
-                <?php endif ?>
-                <span class="text-danger" id="alert_pseudo"></span>
-                <span class="text-success" id="succes_pseudo"></span><br>
-
-                <label for="email" class="form-label text-decoration-underline text-white">Entrez votre e-mail :</label>
-                <input required type="email" class="form-control" name="email" id="email" placeholder="MarcAurele@gmail.ro">
-                <?php if (isset($errors['email'])) : ?>
-                    <span class="my-1 text-danger">
-                        <?= $errors['email'] ?>
-                    </span>
-                <?php endif ?>
-                <span class="text-danger" id="alert_mail"></span>
-                <span class="text-success" id="succes_mail"></span><br>
-
-                <label for="password" class="form-label text-white">Entrez un mot de passe :</label>
-                <input required type="password" class="form-control" name="password" id="password">
-                <?php if (isset($errors['pwd-not-accept'])) : ?>
-                    <span class="my-1 text-danger">
-                        <?= $errors['pwd-not-accept'] ?>
-                    </span>
-                <?php endif ?>
-                <?php if (isset($errors['pwd'])) : ?>
-                    <span class="my-1 text-danger">
-                        <?= $errors['pwd'] ?>
-                    </span>
-                <?php endif ?>
-                <?php if (isset($errors['pwd-not-identical'])) : ?>
-                    <span class="my-1 text-danger">
-                        <?= $errors['pwd-not-identical'] ?>
-                    </span>
-                <?php endif ?>
-                <span class="text-danger" id="alert_pwd"></span>
-                <span class="text-success" id="succes_pwd"></span><br>
-                <input required type="password" class="form-control" name="password2" id="password2">
-                <?php if (isset($errors['pwd2'])) : ?>
-                    <span class="my-1 text-danger">
-                        <?= $errors['pwd2'] ?>
-                    </span>
-                <?php endif ?>
-                <?php if (isset($errors['pwd-not-identical'])) : ?>
-                    <span class="my-1 text-danger">
-                        <?= $errors['pwd-not-identical'] ?>
-                    </span>
-                <?php endif ?>
-                <span class="text-danger mb-1" id="alert_pwd"></span>
-                <span class="text-success" id="succes_pwd"></span><br>
-                <button id="btn" class="btn btn-dark" type="submit" name="submit_login_inscription">Inscription</button>
-                <input type="hidden" name="submit_login_inscription" value="1" />
+    <div class="row justify-content-center">
+        <div class="col-md-8 mt-2">
+            <h1 class="mt-3 text-white">Envie de rejoindre Meta-Mind ?</h1>
+            <p class="py-1 px-2 text-white"><small>N'hesite plus et inscrit toi !</small></p>
+            <form action="" method="POST" id="form" class="p-4 border rounded my-4 bg-dark text-white">
+                <div class="mb-3">
+                    <label for="Name" class="form-label mx-3">Email :</label>
+                    <div class="d-flex aligns-center">
+                        <input type="email" class="form-control" id="mail" name="mail" placeholder="name@example.com" required>
+                        <input type="color" id="color_mail" class="form-control form-control-color mx-1 " value="#f8f9fa" title="green">
+                    </div>
+                    <div id="emailHelp" class="form-text text-secondary">Nous ne partagerons jamais votre e-mail avec quelqu'un d'autre.</div>
+                    <?php if (!empty($error['mail'])) : ?>
+                        <span class="text-danger"><?= $error['mail'] ?></span>
+                    <?php endif; ?>
+                    <span class="text-danger" id="error_mail"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label mx-3">Nom :</label>
+                    <div class="d-flex aligns-center">
+                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Lastname" required>
+                        <input type="color" id="color_lastname" class="form-control form-control-color mx-1" value="#f8f9fa" title="green">
+                    </div>
+                    <?php if (!empty($error['lastname'])) : ?>
+                        <span class="text-danger"><?= $error['lastname'] ?></span>
+                    <?php endif; ?>
+                    <span class="text-danger" id="error_lastname"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label mx-3">Prénom :</label>
+                    <div class="d-flex aligns-center">
+                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Firstname" required>
+                        <input type="color" id="color_firstname" class="form-control form-control-color mx-1" value="#f8f9fa" title="green">
+                    </div>
+                    <?php if (!empty($error['firstname'])) : ?>
+                        <span class="text-danger"><?= $error['firstname'] ?></span>
+                    <?php endif; ?>
+                    <span class="text-danger" id="error_firstname"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label mx-3">Pseudo :</label>
+                    <div class="d-flex aligns-center">
+                        <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Pseudo" required>
+                        <input type="color" id="color_pseudo" class="form-control form-control-color mx-1" value="#f8f9fa" title="green">
+                    </div>
+                    <?php if (!empty($error['pseudo'])) : ?>
+                        <span class="text-danger"><?= $error['pseudo'] ?></span>
+                    <?php endif; ?>
+                    <span class="text-danger" id="error_pseudo"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label mx-3">Mot de passe :</label>
+                    <input type="password" class="form-control" id="pwd" name="pwd" required>
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="pwd2" name="pwd2" required>
+                </div>
+                <div class="h-25 my-1 progress" id="background_bar">
+                    <div class="text-center progress-bar progress-bar-striped bg-danger" id="bar" role="progressbar" width="0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                </div>
+                <div id="pwdHelp" class="form-text text-secondary">Votre mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un caractère spécial et être d'au moins 6 caractères de long.</div>
+                <?php if (!empty($error['pwd'])) : ?>
+                    <span class="text-danger"><?= $error['pwd'] ?></span>
+                <?php endif; ?>
+                <?php if (!empty($error['pwd2'])) : ?>
+                    <span class="text-danger"><?= $error['pwd2'] ?></span>
+                <?php endif; ?>
+                <?php if (!empty($error['insert'])) : ?>
+                    <span class="text-danger"><?= $error['insert'] ?></span>
+                <?php endif; ?>
+                <span class="text-danger" id="error_pwd"></span><br>
+                <span class="text-danger" id="error_pwd2"></span><br>
+                <span class="text-danger" id="error_form"></span>
+                <hr>
+                <div class=" d-flex aligns-center justify-content-between">
+                    <button type="submit" class="btn btn-outline-light" name="submit_inscription" id="submit_inscription">S'inscrire</button>
+                    <input type="hidden" name="submit_inscription">
+                    <div class="d-flex aligns-center">
+                        <a href="?page=index" class="btn btn-outline-light">Déjà un compte ?</a>
+                    </div>
+                </div>
             </form>
-            <br>
-            <a class="btn btn-dark" href="?page=connexion">Vous avez déjà un compte ?</a>
         </div>
-        <?php if (isset($errors['mail_already_exist'])) : ?>
-            <div class="col-12 col-md-4 text-danger">
-                <?= $errors['mail_already_exist'] ?>
-            </div>
-        <?php endif ?>
-        <span class="text-danger mb-1" id="alert_form"></span>
-        <span class="text-success" id="succes_form"></span><br>
+        <script src="assets/js/controle_inscri.js"></script>
+        <script src="assets/js/progress_bar_mdp.js"></script>
     </div>
 </div>
-
-<script src="assets/js/controle_inscri.js"></script>

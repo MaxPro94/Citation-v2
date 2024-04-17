@@ -19,7 +19,7 @@ if (isset($_POST['submit_login_connex'])) {
     if (!isset($errors['email'])) {
 
         $mail = $_POST['email'];
-        $requete = $dbh->query("SELECT * FROM utilisateur WHERE mail = '$mail'");
+        $requete = $dbh->query("SELECT mail FROM utilisateur WHERE mail = '$mail'");
         $requete->fetch();
 
         // Si le résultat du comptage des ligne est inférieur ou égal a 0
@@ -46,6 +46,7 @@ if (isset($_POST['submit_login_connex'])) {
 
             session_start();
 
+            $_SESSION['id_droit'] = $utilisateur['id_droit'];
             $_SESSION['user_id'] = $utilisateur['id_utilisateur'];
             $_SESSION['name'] = $utilisateur['nom_compte'];
 
@@ -58,7 +59,6 @@ if (isset($_POST['submit_login_connex'])) {
             $resultat_img = $requete->fetch();
 
             $_SESSION['img'] = $resultat_img['img'];
-
 
             header('Location: index.php');
             exit;

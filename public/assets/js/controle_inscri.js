@@ -1,135 +1,161 @@
-let mail_user = document.querySelector('#email')
+const mail = document.querySelector('#mail')
+const lastname = document.querySelector('#lastname')
+const firstname = document.querySelector('#firstname')
+const pseudo = document.querySelector('#pseudo')
+const pwd = document.querySelector('#pwd')
+const pwd2 = document.querySelector('#pwd2')
+const mySubmit = document.querySelector('#submit_inscription')
+const error_mail = document.querySelector('#error_mail')
+const error_lastname = document.querySelector('#error_lastname')
+const error_firstname = document.querySelector('#error_firstname')
+const error_pseudo = document.querySelector('#error_pseudo')
+const error_pwd = document.querySelector('#error_pwd')
+const error_pwd2 = document.querySelector('#error_pwd2')
+const error_submit = document.querySelector('#error_form')
+const check_color_mail = document.querySelector("#color_mail")
+const check_color_lastname = document.querySelector("#color_lastname")
+const check_color_firstname = document.querySelector("#color_firstname")
+const check_color_pseudo = document.querySelector("#color_pseudo")
+const expressionReguliereMail = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+const expressionReguliereMdp = /^(?=(?:.*[A-Z]){1,})(?=(?:.*[a-z]){1,})(?=(?:.*[\W_]){1,}).{6,}$/
+let validation = 0
 
-let pwd_user = document.querySelector('#password')
-
-let pwd_user2 = document.querySelector('#password2')
-
-let pseudo_user = document.querySelector('#pseudo')
-
-let lastname_user = document.querySelector('#lastname')
-
-let firstname_user = document.querySelector('#firstname')
-
-const mail_word = '@' // Mise en place de cette variable afin de contrôler l'e-mail
-
-const mail_word2 = '.'
-
-let btn_submit = document.querySelector('#btn')
-
-// Je définit les caractères spéciaux demander pour le mot de passe
-const pwd_car = ['!', '*', '&', '$', '#', '%', '&', '_', '-', '+']
-
-
-
-
-// Je vérifie si l'e-mail renseigner comporte bien un @ et si il existe déjà en BDD.
-mail_user.addEventListener("blur", function(e){
-    if(mail_user.value.includes(mail_word) && mail_user.value.includes(mail_word2)){
-        document.querySelector('#succes_mail').innerHTML = "L'e-mail est valide"
-        document.querySelector('#alert_mail').innerHTML = ""
-        fetch('/api.php?action=check-user&mail=' + this.value) // Pour que les datas soit reçus dans le bon format nous passons par api.php qui traiteras l'information différement de index.php
-        .then(function(response){ // Le retour du fetch nous l'appelerons response
-            return response.json() // Nous lui donnons le format dans lequel il doit interpréter les data 
-        })
-        .then(function(resultat){ // Une fois l'interprétation faite nous lui donnerons le nom de resultat
-            if(resultat.nb == 1){ // Et nous commencerons les vérification en mentionnons cette "variable" resultat.
-                console.log(resultat)
-                document.querySelector('#succes_mail').innerHTML = ""
-                document.querySelector('#alert_mail').innerHTML = "Cet e-mail est déjà enregistrer"
-            } else {
-                document.querySelector('#alert_mail').innerHTML = ""
-                document.querySelector('#succes_mail').innerHTML = "Cet e-mail est disponible"
-            }
-        })
-    } else {
-        document.querySelector('#succes_mail').innerHTML = ""
-        document.querySelector('#alert_mail').innerHTML = "L'e-mail doit être au bon format"
-        mail_user.focus()
-    }
+check_color_mail.addEventListener("click", function(e){
+    e.preventDefault()
 })
+mail.addEventListener("blur", function(e){
+    if(mail.value.trim().length == 0){
+        error_mail.innerHTML = "Le champs e-mail est obligatoire";
+        check_color_mail.setAttribute("value", "#dc3545");
 
-
-// Vérification si le lastname comporte plus d'une lettre.
-lastname_user.addEventListener("blur", function(){
-    if(lastname_user.value.length <= 1 ){
-        document.querySelector('#alert_lastname').innerHTML = "Un nom doit comporter au moins 1 caractère"
-        document.querySelector('#succes_lastname').innerHTML = ""
     } else {
-        document.querySelector('#succes_lastname').innerHTML = "Nom valide !"
-        document.querySelector('#alert_lastname').innerHTML = ""
-    }
-})
 
-// Vérification si le firstname comporte plus d'une lettre
-firstname_user.addEventListener("blur", function(){
-    if(firstname_user.value.length <= 1 ){
-        document.querySelector('#alert_firstname').innerHTML = "Un prénom doit comporter au moins 1 caractère"
-        document.querySelector('#succes_firstname').innerHTML = ""
-    } else {
-        document.querySelector('#succes_firstname').innerHTML = "Prénom valide !"
-        document.querySelector('#alert_firstname').innerHTML = ""
-    }
-})
+        if (expressionReguliereMail.test(mail.value)) {
+            error_mail.innerHTML = ""
+            fetch('/api.php?action=check-user&mail=' + this.value)
+            .then(function(response){
+                return response.json()
+            })
+            .then(function(resultat){
 
-// Vérification de si le pseudo comporte plus d'une lettre
-pseudo_user.addEventListener("blur", function(){
-    if(pseudo_user.value.length <= 1 ){
-        document.querySelector('#alert_pseudo').innerHTML = "Un pseudo doit comporter au moins 1 caractère"
-        document.querySelector('#succes_pseudo').innerHTML = ""
-    } else {
-        document.querySelector('#succes_pseudo').innerHTML = "Pseudo valide !"
-        document.querySelector('#alert_pseudo').innerHTML = ""
-    }
-})
-
-
-// Vérification si le mot de passe comporte bien un des caractère spécial demander.
-pwd_user2.addEventListener("blur", function(){
-    if(pwd_user.value.length < 8 ){
-        document.querySelector('#alert_pwd').innerHTML = "Le mot de passe doit comporter un minimum de 8 caractères"
-        document.querySelector('#succes_pwd').innerHTML = ""
-    } else {
-        if(pwd_car.some(word => pwd_user.value.includes(word))){ // some() verifie si il y'a au moins une des valeurs du tableau pwd_car dans le mot de passe utilisateur
-            document.querySelector('#succes_pwd').innerHTML = "Le mot de passe est accépté"
-            document.querySelector('#alert_pwd').innerHTML = ""
-
-            if(pwd_user.value === pwd_user2.value){
-                document.querySelector('#succes_pwd').innerHTML = "Les mots de passes sont identiques"
-                document.querySelector('#alert_pwd').innerHTML = ""
-        
-            } else {
-                document.querySelector('#alert_pwd').innerHTML = "Les mots de passe ne sont pas identiques !"
-                document.querySelector('#succes_pwd').innerHTML = ""
-            }
+                if(resultat.nb == 1){
+                    check_color_mail.setAttribute("value", "#dc3545");
+                    error_mail.innerHTML = "Cette adresse mail existe déjà";
+                } else {
+                    check_color_mail.setAttribute("value", "#198754");          
+                    validation += 1
+                    error_mail.innerHTML = ""
+                }
+            })
         } else {
-            document.querySelector('#alert_pwd').innerHTML = "Le mot de passe doit comporté au minimum un des caractères suivant: !, *, &, $, #, %, &, _, -, +"
-            document.querySelector('#succes_pwd').innerHTML = ""
+            check_color_mail.setAttribute("value", "#dc3545");
+            error_mail.innerHTML = "L'adresse mail n'est pas valide";
         }
     }
+})
+
+check_color_lastname.addEventListener("click", function(e){
+    e.preventDefault()
+})
+lastname.addEventListener("blur", function(e){
+    if(lastname.value.trim().length <= 1){
+        error_lastname.innerHTML = "Le nom doit comporter plus d'une lettre";
+        check_color_lastname.setAttribute("value", "#dc3545");
+
+
+    } else {
+        check_color_lastname.setAttribute("value", "#198754");
+        validation += 1
+        error_lastname.innerHTML = "";
+    }
     
 })
 
-// Vérification si les deux mot de passe sont identiques.
-btn_submit.addEventListener("click", function(e){
-    e.preventDefault() // On demande a js de ne pas utiliser le btn submit comme il le fait par défaut. !!! Cette technique empeche le button de type submit avec un nom d'être envoyer.
-
-    if(mail_user !== null && lastname_user !== null && firstname_user !== null && pseudo_user !== null && pwd_user !== null && pwd_user2 !== null ){
-        // document.querySelector('#form_inscription').submit(); // Même en réactivant le submit le $_POST['submit_button_login'] ne serra pas envoyer. Les button et les input de type submit avec un nom ne seront plus interpreter. 
-        document.querySelector('#alert_form').innerHTML = ""
+check_color_firstname.addEventListener("click", function(e){
+    e.preventDefault()
+})
+firstname.addEventListener("blur", function(e){
+    if(firstname.value.trim().length <= 1){
+        error_firstname.innerHTML = "Le prénom doit comporter plus d'une lettre";
+        check_color_firstname.setAttribute("value", "#dc3545");
     } else {
-        document.querySelector('#alert_form').innerHTML = "Veuillez renseigner tout les champs"
+        check_color_firstname.setAttribute("value", "#198754");
+        validation += 1
+        error_firstname.innerHTML = "";
+    }
+
+    
+})
+
+check_color_pseudo.addEventListener("click", function(e){
+    e.preventDefault()
+})
+pseudo.addEventListener("blur", function(e){
+    if(pseudo.value.trim().length <= 1){
+        error_pseudo.innerHTML = "Le pseudo doit comporter plus d'une lettre";
+        check_color_pseudo.setAttribute("value", "#dc3545");
+    } else {
+        check_color_pseudo.setAttribute("value", "#198754");
+        validation += 1
+        error_pseudo.innerHTML = "";
     }
 
     
 })
 
 
-// Afin de generaliser la verification des input pour voir si ils sont vides:
+pwd.addEventListener("blur", function(e){ 
 
-// Ajouter un data-required sur chaque input a traiter
-// Faire un querySelector de ces data-required
-// Faire un foreach des ceux-ci
-// Si le data-required est vide appliquer une class sur cet element que nous appelerons erreurs
-// Cette class nous la traiterons en CSS
-// Ne pas oublier d'enlever la class erreur si l'utilisateur change la donnée de l'input
+    if(pwd.value.length > 0){
+
+        if(expressionReguliereMdp.test(pwd.value) == false){
+            error_pwd.innerHTML = "Votre mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un caractère spécial et être d'au moins 6 caractères de long.";
+    
+        } else {
+            validation += 1
+            error_pwd.innerHTML = "";
+        }
+    } else {
+        error_pwd.innerHTML = "Veuillez renseigner un mot de passe"
+    }
+
+
+})
+
+pwd2.addEventListener("blur", function(e){
+
+    if(pwd2.value.length > 0){
+        if(expressionReguliereMdp.test(pwd2.value) == false){
+            error_pwd2.innerHTML = "Le mot de passe renseigné doit contenir entre 6 et 32 caractères avec des minuscules, des MAJUSCULES et des caractères spéciaux comme @, $, €, *, ^, §, %, &.";
+    
+        }
+        if(pwd2.value == pwd.value){
+            validation += 1
+            error_pwd2.innerHTML = "";
+    
+        } else {
+            error_pwd2.innerHTML = "Les mots de passe ne correspondent pas";
+            
+        }
+    } else {
+        error_pwd2.innerHTML = "Veuillez remplir la verification de votre mot de passe";
+    }
+
+
+})
+
+
+mySubmit.addEventListener("click", function(e){
+    e.preventDefault()
+    
+    if(validation < 6){
+        error_submit.innerHTML = "Veuillez remplir tout les champs requis";
+    } else {
+        if(validation == 6){
+            document.querySelector('#form').submit()
+        }
+    }
+
+})
+
 

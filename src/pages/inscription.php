@@ -2,21 +2,22 @@
 $title = "Inscription";
 
 // Si $_POST['submit_login_inscription'] existe (Donc quand l'utilisateur appuie sur le submit)
-if (isset($_POST['submit_login_inscription'])) {
+if (isset($_POST['submit_inscription'])) {
 
 
     // On créer une variable qui contiendras un tableau qui contiendras les messages d'erreurs.
     $errors = [];
 
     // Si tout les $_POST que nous avons besoin existe bien
-    if (isset($_POST['email']) && isset($_POST['pseudo']) && isset($_POST['lastname']) && isset($_POST['firstname']) && isset($_POST['password']) && isset($_POST['password2'])) {
+    if (isset($_POST['mail']) && isset($_POST['pseudo']) && isset($_POST['lastname']) && isset($_POST['firstname']) && isset($_POST['pwd']) && isset($_POST['pwd2'])) {
         // On met nos input dans des variable afin d'avoir une syntaxe et un code plus lisible:
-        $mail = $_POST['email'];
+        $mail = $_POST['mail'];
         $pseudo = $_POST['pseudo'];
         $nom = $_POST['lastname'];
         $prenom = $_POST['firstname'];
-        $pwd = $_POST['password'];
-        $pwd2 = $_POST['password2'];
+        $pwd = $_POST['pwd'];
+        $pwd2 = $_POST['pwd2'];
+        $pseudo = $_POST['pseudo'];
 
 
         // On peut maintenant verifier que les champs sont remplis correctements.
@@ -24,36 +25,36 @@ if (isset($_POST['submit_login_inscription'])) {
 
         if (empty($mail) || !filter_var($mail, FILTER_VALIDATE_EMAIL)) { // On applique un filtre avec filter_var qui va valider si l'email est au bon format
             // On stock l'erreur mail dans le tableau créer plus tot et nous lui indiquons une clé (['email']) afin de pouvoir l'afficher plus tard.
-            $errors['email'] = "Le champs e-mail doit être renseigner avec un e-mail valide.";
+            $errors['mail'] = "Le champ e-mail doit être renseigné avec une adresse e-mail valide.";
         }
 
         if (empty($pseudo) || strlen($pseudo) <= 1) {
-            $errors['pseudo'] = "Veuillez renseigner un pseudo de plus d'un caractère.";
+            $errors['pseudo'] = "Veuillez renseigner un pseudo d'au moins un caractère.";
         }
 
         if (empty($nom) || strlen($nom) <= 1) {
-            $errors['nom'] = "Veuillez renseigner un nom de plus d'un caractère";
+            $errors['lastname'] = "Veuillez renseigner un nom d'au moins un caractère.";
         }
 
         if (empty($prenom) || strlen($prenom) <= 1) {
-            $errors['prenom'] = "Veuillez renseigner un prenom de plus d'un caractère";
+            $errors['firstname'] = "Veuillez renseigner un prénom d'au moins un caractère.";
         }
 
         if (empty($pwd)) {
-            $errors['pwd'] = "Veuillez renseigner un mot de passe";
+            $errors['pwd'] = "Veuillez renseigner un mot de passe.";
         }
 
         if (empty($pwd2)) {
-            $errors['pwd2'] = "Veuillez renseigner la verification du mot de passe";
+            $errors['pwd2'] = "Veuillez renseigner la vérification du mot de passe.";
         }
 
         if ($pwd === $pwd2) {
             $pwd = $pwd2;
-            if (!preg_match('/[a-zA-Z0-9\!\@\$\€\*\^\§\%\&]{8,32}/', $pwd)) {
-                $errors['pwd-not-accept'] = "Le mot de passe renseigner doit contenir entre 8 et 32 carcatères avec des minuscules, des MAJUSCULES et des caractères spéciaux comme @,$,€,*,^,§,%,&.";
+            if (!preg_match('/^((?=.*[A-Z]).*(?=.*[a-z]).*(?=.*[\W_]).{6,})$/', $pwd)) {
+                $errors['pwd'] = "Votre mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un caractère spécial et être d'au moins 6 caractères de long.";
             }
         } else {
-            $errors['pwd-not-identical'] = "Les mots de passes rensegnier ne sont pas identiques";
+            $errors['pwd'] = "Les mots de passe renseignés ne sont pas identiques.";
         }
 
         if (empty($errors)) { // Si le tableau des erreurs est vide:
@@ -65,8 +66,14 @@ if (isset($_POST['submit_login_inscription'])) {
 
 
             if ($verif_mail_user['nb'] > 0) { // Si la variable est true cela veut dire que l'email renseigner est déjà enregistrer en BDD.
-                $errors['mail_already_exist'] = "Le mail renseigner existe déjà.";
+                $errors['mail'] = "L'adresse e-mail renseignée existe déjà.";
             } else {
+
+                //Nettoyage des 3 variables pour n'avoir aucun problème lors de l'eventuel affichage de ceci
+                $pseudo = htmlspecialchars($pseudo);
+                $nom = htmlspecialchars($nom);
+                $prenom = htmlspecialChars($prenom);
+                $mail = filter_var($mail, FILTER_SANITIZE_EMAIL);
 
                 // Un fois la verification de l'existence du mot de passe en BDD nous pouvons passer a l'insertion des données.
                 $salt = "mx1"; // Nous créons un grains de sel a rajouter au mot de pasee de l'utilisteur, afin de pouvoir controler les modifications qui pourrait être apporter a notre BDD sans notre accord.
@@ -92,6 +99,7 @@ if (isset($_POST['submit_login_inscription'])) {
                     ]);
                     $data_new_user = $new_user->fetch();
 
+                    $_SESSION['id_droit'] = $data_new_user['id_droit'];
                     $_SESSION['user_id'] = $data_new_user['id_utilisateur'];
                     $_SESSION['name'] = $data_new_user['nom_compte'];
 
