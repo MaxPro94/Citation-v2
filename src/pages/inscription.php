@@ -87,7 +87,7 @@ if (isset($_POST['submit_inscription'])) {
                     'pwd' => $pwd,
                     'pseudo' => $pseudo,
                     'img_profil' => 1,
-                    'id_droit' => 1
+                    'id_droit' => 2
                 ]);
 
                 if ($dbh->lastInsertID()) { // Si la base de donnée nous retourne bien un id (Le dernier créer) donc le création du compte a bien été effectuer.
