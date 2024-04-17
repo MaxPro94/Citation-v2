@@ -31,18 +31,18 @@
             <?php endif ?>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="btn btn-outline-warning mx-2" aria-current="page" href="?page=index">Acceuil</a>
-                    <a class="btn btn-outline-warning mx-2" href="?page=citations">Les citations</a>
-                    <a class="btn btn-outline-warning mx-2" href="?page=auteurs">Les philosophes</a>
+                    <a class="btn btn-outline-light text-warning mx-2" aria-current="page" href="?page=index">Acceuil</a>
+                    <a class="btn btn-outline-light text-warning mx-2" href="?page=citations">Les citations</a>
+                    <a class="btn btn-outline-light text-warning mx-2" href="?page=auteurs">Les philosophes</a>
                     <?php if (!isset($_SESSION['user_id'])) : ?>
-                        <a href="?page=inscription" id="hover" class="btn btn-outline-warning mx-2">Inscription</a>
-                        <a href="?page=connexion" id="hover" class="btn btn-outline-warning mx-2">Connexion</a>
+                        <a href="?page=inscription" id="hover" class="btn btn-outline-light text-warning mx-2">Inscription</a>
+                        <a href="?page=connexion" id="hover" class="btn btn-outline-light text-warning mx-2">Connexion</a>
                     <?php endif ?>
                     <?php if (isset($_SESSION['user_id'])) : ?>
-                        <a class="btn btn-outline-warning mx-2" href="?page=compte">Mon compte</a>
+                        <a class="btn btn-outline-light text-warning mx-2" href="?page=compte">Mon compte</a>
                     <?php endif ?>
                     <?php if (isset($_SESSION['id_droit']) && $_SESSION['id_droit'] == 1) : ?>
-                        <a class="btn btn-outline-warning mx-2" href="?page=ajout_citation">Ajouter une citation</a>
+                        <a class="btn btn-outline-light text-warning mx-2" href="?page=ajout_citation">Ajouter une citation</a>
                     <?php endif ?>
                     <?php if (isset($_SESSION['user_id'])) : ?>
                         <a class="btn btn-outline-danger mx-2 text-warning" href="?page=deconnexion">Déconnexion</a>

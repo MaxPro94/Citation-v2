@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 mt-2">
-            <h1 class="mt-3 text-white">Envie de rejoindre Meta-Mind ?</h1>
+            <h1 class="mt-3 text-white">Envie de rejoindre Meta-Mindset ?</h1>
             <p class="py-1 px-2 text-white"><small>N'hesite plus et inscrit toi !</small></p>
             <form action="" method="POST" id="form" class="p-4 border rounded my-4 bg-dark text-white">
                 <div class="mb-3">
@@ -75,10 +75,10 @@
                 <span class="text-danger" id="error_form"></span>
                 <hr>
                 <div class=" d-flex aligns-center justify-content-between">
-                    <button type="submit" class="btn btn-outline-light" name="submit_inscription" id="submit_inscription">S'inscrire</button>
+                    <button type="submit" class="btn btn-outline-light text-warning" name="submit_inscription" id="submit_inscription">S'inscrire</button>
                     <input type="hidden" name="submit_inscription">
                     <div class="d-flex aligns-center">
-                        <a href="?page=index" class="btn btn-outline-light">Déjà un compte ?</a>
+                        <a href="?page=index" class="btn btn-outline-light text-warning">Déjà un compte ?</a>
                     </div>
                 </div>
             </form>
