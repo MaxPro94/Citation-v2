@@ -22,16 +22,15 @@ if (isset($_SESSION['user_id'])) {
             $error['photo'] = "Veuillez renseigner une photo";
         }
 
-        if(!empty($_POST['mort'])){
+        if (!empty($_POST['mort'])) {
             $mort = $_POST['mort'];
-            if(!isset($error['naissance'])){
+            if (!isset($error['naissance'])) {
                 $naissance = $_POST['naissance'];
 
-                if($naissance > $mort){
+                if ($naissance > $mort) {
                     $error['mort'] = "La date de décés ne peut être inférieur a la date de naissance";
                 }
             }
-
         }
 
         if (empty($_POST['description']) || strlen($_POST['description']) < 350) {
@@ -42,7 +41,7 @@ if (isset($_SESSION['user_id'])) {
             $error['biographie'] = "Veuillez renseigner une biographie de plus de 500 caractères.";
         }
 
-        if(empty($error)){
+        if (empty($error)) {
 
             $name = ucfirst($_POST['name']);
             $firstname = ucfirst($_POST['firstname']);
@@ -56,55 +55,62 @@ if (isset($_SESSION['user_id'])) {
                 'prenom' => htmlspecialchars($firstname),
                 'description' => htmlspecialchars($description),
                 'biographie' => htmlspecialchars($biographie),
-                'date_start' => $naissance,
-                'date_end' => $mort,
+                'date_start' => htmlspecialchars($naissance),
+                'date_end' => htmlspecialchars($mort),
                 'photo' => $photo
             ]);
 
-            if($dbh->lastInsertID()){
+            if ($dbh->lastInsertID()) {
                 $validationAddAuteur = "L'ajout a bien etais effectuer !";
             }
-            
-
         }
     }
 
     if (isset($_POST['add_citation'])) {
         $error = [];
-        if(empty($_POST['choix_auteur'])){
+        if (empty($_POST['choix_auteur'])) {
             $error['choix_auteur'] = "Veuillez choisir le philosophe a qui appartient la citation à enregistrer.";
         }
-        if(empty($_POST['citation']) || strlen($_POST['citation']) <= 5 ){
+        if (empty($_POST['citation']) || strlen($_POST['citation']) <= 5) {
             $error['citation'] = "Veuillez renseigner la citation à enregistrer.";
         }
+        if (empty($_POST['date_citation'])) {
+            $error['date_citation'] = "Veuillez renseigner une date de parution.";
+        }
+        if (empty($_POST['explication'])) {
+            $error['explication'] = "Veuillez renseigner une explication.";
+        }
 
-        if(empty($error)){
+        if (empty($error)) {
             $auteur = htmlspecialchars($_POST['choix_auteur']);
-            $citation =htmlspecialchars($_POST['citation']);
+            $citation = htmlspecialchars($_POST['citation']);
+            $explication = htmlspecialchars($_POST['explication']);
+            $date = htmlspecialchars($_POST['date_citation']);
+
 
             $requete = $dbh->prepare("SELECT id_auteur FROM auteur WHERE nom = :nom");
             $requete->execute([
                 'nom' => $auteur
             ]);
             $resultat_id_auteur = $requete->fetch();
+            $id_auteur = $resultat_id_auteur['id_auteur'];
 
             $requete_add = $dbh->prepare("INSERT INTO citations (citation, explication, année, id_auteur) VALUES (:citation, :explication, :année, :id_auteur)");
             $requete_add->execute([
-                'citation' => $citation,
-                'explication' => $explication,
+                'citation' => ucfirst($citation),
+                'explication' => ucfirst($explication),
                 'année' => $date,
-                'id_auteur' => $resultat_id_auteur
+                'id_auteur' => $id_auteur
             ]);
         }
-
     }
 
     if (isset($_POST['update_citation'])) {
         $error = [];
-        if(empty($_POST['select_auteur'])){
+        if (empty($_POST['select_auteur'])) {
             $error['select_auteur'] = "Veuillez renseigner un philosophe";
         }
-        if(empty($_POST['select_citation'])){
+        if (empty($_POST['select_citation'])) {
             $error['select_citation'] = "Veuillez renseigner une citation";
         }
     }

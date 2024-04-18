@@ -1,11 +1,11 @@
-<div class="container mb-5">
+<div class="container mb-5 mt-2 h-100">
     <div class="row mb-5">
         <div class="col-xl-6 col-sm-4 my-5 justify-content-around">
             <div class="card">
                 <img src="<?= $photoAuteur ?>" class="rounded" alt="...">
             </div>
             <hr>
-            <div class="progress" id="blips">
+            <div class="progress mb-5" id="blips">
                 <div class="progress-bar bg-dark progress-bar-striped" role="progressbar">
                     <span class="sr-only "></span>
                 </div>
