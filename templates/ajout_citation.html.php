@@ -84,8 +84,6 @@
                     <button class="btn btn-outline-dark text-light w-100" name="add_auteur">Ajouter</button>
                 </form>
             </div>
-            <?php var_dump($_POST) ?>
-            <?php var_dump($_FILES) ?>
             <hr class="mt-4">
             <div class="col-12">
                 <h3 class="text-white mt-4">Ajouter une citation :</h3>

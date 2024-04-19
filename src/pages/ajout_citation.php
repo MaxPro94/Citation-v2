@@ -95,13 +95,15 @@ if (isset($_SESSION['user_id'])) {
             $resultat_id_auteur = $requete->fetch();
             $id_auteur = $resultat_id_auteur['id_auteur'];
 
-            $requete_add = $dbh->prepare("INSERT INTO citations (citation, explication, année, id_auteur) VALUES (:citation, :explication, :année, :id_auteur)");
+            $requete_add = $dbh->prepare("INSERT INTO citations (citation, explication, année, id_auteur) VALUES (:citation, :explication, :annee, :id_auteur)");
             $requete_add->execute([
                 'citation' => ucfirst($citation),
                 'explication' => ucfirst($explication),
-                'année' => $date,
+                'annee' => $date,
                 'id_auteur' => $id_auteur
             ]);
+
+            // $requete_add->debugDumpParams(); exit;
         }
     }
 
