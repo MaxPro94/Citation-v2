@@ -115,5 +115,6 @@ if (isset($_SESSION['user_id'])) {
         if (empty($_POST['select_citation'])) {
             $error['select_citation'] = "Veuillez renseigner une citation";
         }
+        
     }
 }

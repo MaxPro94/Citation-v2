@@ -146,7 +146,7 @@
             <div class="col-12">
                 <h3 class="text-white mt-4">Modifier une citation :</h3>
                 <form action="" method="POST">
-                    <table class="table table-dark border border-secondary">
+                    <table class="table table-dark border border-secondary" id="update_cit">
                         <thead>
                             <tr>
                                 <th>Choix du philosophe :</th>
@@ -175,30 +175,47 @@
                                 </td>
                             </tr>
                         </tbody>
-                        <thead>
-                            <tr>
-                                <th>Année :</th>
-                                <th>Explication / Vulgarisation :</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <textarea type="text" class="w-100" name="citation"></textarea>
-                                    <?php if (isset($error['citation'])) : ?>
-                                        <span class="text-danger"><?= $error['citation'] ?></span>
-                                    <?php endif; ?>
-                                </td>
-                                <td>
-                                    <textarea type="text" class="w-100" name="explication"></textarea>
-                                    <?php if (isset($error['explication'])) : ?>
-                                        <span class="text-danger"><?= $error['explication'] ?></span>
-                                    <?php endif; ?>
-                                </td>
-                            </tr>
-                        </tbody>
                     </table>
-                    <button class="btn btn-dark w-100" name="update_citation">Ajouter</button>
+                    <template id="temp_modif_cit">
+                        <hr class="mt-4">
+                        <form action="" method="POST">
+                            <table class="table table-dark border border-secondary">
+                                <thead>
+                                    <tr>
+                                        <th>Année :</th>
+                                        <th>ID Auteur :</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input id="annee" type="number" value="">
+                                        </td>
+                                        <td>
+                                            <input id="IDauteur" type="number" value="">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th>Citation :</th>
+                                        <th>Explication :</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <textarea id="citation"></textarea>
+                                        </td>
+                                        <td>
+                                            <textarea id="explication"></textarea>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </template>
+                    <a class="btn btn-dark w-100" name="update_citation">Modifier</a>
                 </form>
             </div>
             <hr class="mt-4">
