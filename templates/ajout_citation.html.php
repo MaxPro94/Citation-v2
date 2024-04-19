@@ -203,6 +203,44 @@
                     <button class="btn btn-dark w-100" name="update_citation">Ajouter</button>
                 </form>
             </div>
+            <hr class="mt-4">
+            <div class="col-12 mb-5">
+                <h3 class="text-white mt-4">Supprimer une citation :</h3>
+                <form action="" method="POST">
+                    <table class="table table-dark border border-secondary">
+                        <thead>
+                            <tr>
+                                <th>Choix du philosophe :</th>
+                                <th>Choix de la citation :</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="1">
+                                    <select name="select_auteur" id="select_aut">
+                                        <?php foreach ($resultats_auteurs as $auteur) : ?>
+                                            <option class="w-100" value="<?= $auteur['id_auteur'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <?php if (isset($error['select_auteur'])) : ?>
+                                        <span class="text-danger"><?= $error['select_auteur'] ?></span>
+                                    <?php endif; ?>
+                                </td>
+                                <td colspan="1">
+                                    <select name="select_citation" id="select_cita">
+                                        <option class="w-100" value=""></option>
+                                    </select>
+                                    <?php if (isset($error['select_citation'])) : ?>
+                                        <span class="text-danger"><?= $error['select_citation'] ?></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-dark w-100" name="update_citation">Supprimer</button>
+                </form>
+            </div>
         </div>
     </div>
+    <script src="assets/js/check_citation.js"></script>
 <?php endif; ?>
