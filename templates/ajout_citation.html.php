@@ -167,9 +167,7 @@
                                 </td>
                                 <td colspan="1">
                                     <select name="select_citation" id="select_cita">
-                                        <?php foreach ($resultats_auteurs as $auteur) : ?>
-                                            <option class="w-100" value="<?= $auteur['nom'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
-                                        <?php endforeach; ?>
+
                                     </select>
                                     <?php if (isset($error['select_citation'])) : ?>
                                         <span class="text-danger"><?= $error['select_citation'] ?></span>
