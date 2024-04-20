@@ -22,25 +22,21 @@ choix_auteur.addEventListener("change", function(){
 
             const IDcitation = parseInt(ListeCitation.value)
             const citation_choisie = resultat.find(citation => citation.id_citations === IDcitation)
+            const citation = document.querySelector("#citation")
+            const explication = document.querySelector("#explication")
+            const annee = document.querySelector("#annee")
+            const IDauteur = document.querySelector("#IDauteur")
 
             console.log(citation_choisie.citation);
             console.log(ListeCitation.value);
 
-            let template = document.querySelector("#temp_modif_cit");
-            let clone = template.content.cloneNode(true);
-            let ligne = clone.firstElementChild;
-            console.log(citation_choisie.citation);
-            console.log(citation_choisie.explication);
-            console.log(citation_choisie.année);
-            console.log(citation_choisie.id_auteur);
-            ligne.querySelector("#citation").innerHTML = citation_choisie.citation;
-            ligne.querySelector("#explication").innerHTML = citation_choisie.explication;
-            ligne.querySelector("#annee").value = citation_choisie.année;
-            ligne.querySelector("#IDauteur").value = citation_choisie.id_auteur;
 
-        
-            // Ajouter le contenu cloné au document actif
-            document.body.appendChild(clone);
+            citation.innerHTML = citation_choisie.citation;
+            explication.innerHTML = citation_choisie.explication;
+            annee.value = citation_choisie.année;
+            IDauteur.value = citation_choisie.id_auteur;
+
+
         })
         
     })

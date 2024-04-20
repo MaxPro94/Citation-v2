@@ -42,7 +42,7 @@
                         <a class="btn btn-outline-light text-warning mx-2" href="?page=compte">Mon compte</a>
                     <?php endif ?>
                     <?php if (isset($_SESSION['id_droit']) && $_SESSION['id_droit'] == 1) : ?>
-                        <a class="btn btn-outline-light text-warning mx-2" href="?page=ajout_citation">Ajouter une citation</a>
+                        <a class="btn btn-outline-light text-warning mx-2" href="?page=ajout_citation">Administrateur</a>
                     <?php endif ?>
                     <?php if (isset($_SESSION['user_id'])) : ?>
                         <a class="btn btn-outline-danger mx-2 text-warning" href="?page=deconnexion">Déconnexion</a>

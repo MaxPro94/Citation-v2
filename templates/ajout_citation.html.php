@@ -60,7 +60,7 @@
                                     <div id="emailHelp" class="form-text text-secondary">Une courte presentation du philosophe (entre 250 et 350 caractères).</div>
                                 </th>
                                 <th colspan="3">Biographie :
-                                    <div id="emailHelp" class="form-text text-secondary">Une presentation bien plsu précise du philosophe (entre 350 et 700 caractères).</div>
+                                    <div id="emailHelp" class="form-text text-secondary">Une presentation bien plus précise du philosophe (entre 350 et 700 caractères).</div>
                                 </th>
                             </tr>
                         </thead>
@@ -145,6 +145,7 @@
             <hr class="mt-4">
             <div class="col-12">
                 <h3 class="text-white mt-4">Modifier une citation :</h3>
+                <h5 class="text-white mt-4 mx-2">D'abord choisissez la citation a modifier :</h5>
                 <form action="" method="POST">
                     <table class="table table-dark border border-secondary" id="update_cit">
                         <thead>
@@ -166,7 +167,7 @@
                                     <?php endif; ?>
                                 </td>
                                 <td colspan="1">
-                                    <select name="select_citation" id="select_cita">
+                                    <select class="text-wrap" name="select_citation" id="select_cita">
 
                                     </select>
                                     <?php if (isset($error['select_citation'])) : ?>
@@ -176,45 +177,44 @@
                             </tr>
                         </tbody>
                     </table>
-                    <template id="temp_modif_cit">
-                        <hr class="mt-4">
-                        <form action="" method="POST">
-                            <table class="table table-dark border border-secondary">
-                                <thead>
-                                    <tr>
-                                        <th>Année :</th>
-                                        <th>ID Auteur :</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input id="annee" type="number" value="">
-                                        </td>
-                                        <td>
-                                            <input id="IDauteur" type="number" value="">
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <thead>
-                                    <tr>
-                                        <th>Citation :</th>
-                                        <th>Explication :</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <textarea id="citation"></textarea>
-                                        </td>
-                                        <td>
-                                            <textarea id="explication"></textarea>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </form>
-                    </template>
+                    <h5 class="text-white mt-2 mx-2">Modifier les données de la citation choisie :</h5>
+                    <form action="" method="POST">
+                        <table class="table table-dark border border-secondary" id="temp_modif_cit">
+                            <thead>
+                                <tr>
+                                    <th>Année :</th>
+                                    <th>ID Auteur :</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_nb">
+
+                                <tr>
+                                    <td>
+                                        <input id="annee" type="number" value="">
+                                    </td>
+                                    <td>
+                                        <input id="IDauteur" type="number" value="">
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th>Citation :</th>
+                                    <th>Explication :</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <textarea id="citation" class="w-100"></textarea>
+                                    </td>
+                                    <td>
+                                        <textarea id="explication" class="w-100"></textarea>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
                     <a class="btn btn-dark w-100" name="update_citation">Modifier</a>
                 </form>
             </div>
