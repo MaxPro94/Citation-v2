@@ -26,11 +26,12 @@ choix_auteur.addEventListener("change", function(){
             const explication = document.querySelector("#explication")
             const annee = document.querySelector("#annee")
             const IDauteur = document.querySelector("#IDauteur")
+            const updateIdCitation = document.querySelector("#id_citation")
 
             console.log(citation_choisie.citation);
             console.log(ListeCitation.value);
 
-
+            updateIdCitation.value = IDcitation
             citation.innerHTML = citation_choisie.citation;
             explication.innerHTML = citation_choisie.explication;
             annee.value = citation_choisie.année;

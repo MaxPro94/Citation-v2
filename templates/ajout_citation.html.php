@@ -2,8 +2,11 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <?php if (isset($validationAddAuteur)) : ?>
-                    <span class="text-success"><?= $validationAddAuteur ?></span>
+                <?php if (isset($validationAuteur)) : ?>
+                    <span class="text-success"><?= $validationAuteur ?></span>
+                <?php endif; ?>
+                <?php if (isset($validationUpdateCitation)) : ?>
+                    <span class="text-success"><?= $validationUpdateCitation ?></span>
                 <?php endif; ?>
                 <h3 class="text-white mt-4">Ajouter un Philosophe :</h3>
 
@@ -140,7 +143,6 @@
                     </table>
                     <button class="btn btn-dark w-100" name="add_citation">Ajouter</button>
                 </form>
-
             </div>
             <hr class="mt-4">
             <div class="col-12">
@@ -178,44 +180,55 @@
                         </tbody>
                     </table>
                     <h5 class="text-white mt-2 mx-2">Modifier les données de la citation choisie :</h5>
-                    <form action="" method="POST">
-                        <table class="table table-dark border border-secondary" id="temp_modif_cit">
-                            <thead>
-                                <tr>
-                                    <th>Année :</th>
-                                    <th>ID Auteur :</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody_nb">
+                    <table class="table table-dark border border-secondary" id="temp_modif_cit">
+                        <thead>
+                            <tr>
+                                <th>Année :</th>
+                                <th>ID Auteur :</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody_nb">
 
-                                <tr>
-                                    <td>
-                                        <input id="annee" type="number" value="">
-                                    </td>
-                                    <td>
-                                        <input id="IDauteur" type="number" value="">
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <thead>
-                                <tr>
-                                    <th>Citation :</th>
-                                    <th>Explication :</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <textarea id="citation" class="w-100"></textarea>
-                                    </td>
-                                    <td>
-                                        <textarea id="explication" class="w-100"></textarea>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </form>
-                    <a class="btn btn-dark w-100" name="update_citation">Modifier</a>
+                            <tr>
+                                <td>
+                                    <input name="update_annee" id="annee" type="number" value="">
+                                    <?php if (isset($error['update_annee'])) : ?>
+                                        <span class="text-danger"><?= $error['update_annee'] ?></span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <input name="update_IDauteur" id="IDauteur" type="number" value="">
+                                    <?php if (isset($error['update_IDauteur'])) : ?>
+                                        <span class="text-danger"><?= $error['update_IDauteur'] ?></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th>Citation :</th>
+                                <th>Explication :</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input name="id_citation" id="id_citation" type="hidden" value="">
+                                    <textarea name="update_citation" id="citation" class="w-100"></textarea>
+                                    <?php if (isset($error['update_citation'])) : ?>
+                                        <span class="text-danger"><?= $error['update_citation'] ?></span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <textarea name="update_explication" id="explication" class="w-100"></textarea>
+                                    <?php if (isset($error['update_explication'])) : ?>
+                                        <span class="text-danger"><?= $error['update_explication'] ?></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="submit" class="btn btn-dark w-100" name="submit_update_citation">Modifier</button>
                 </form>
             </div>
             <hr class="mt-4">
@@ -252,7 +265,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-dark w-100" name="update_citation">Supprimer</button>
+                    <button class="btn btn-dark w-100" name="delete_citation">Supprimer</button>
                 </form>
             </div>
         </div>
