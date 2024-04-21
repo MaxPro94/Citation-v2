@@ -1,7 +1,7 @@
 <?php if ($_SESSION['id_droit'] == 1) : ?>
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 mt-4">
                 <?php if (isset($validationAuteur)) : ?>
                     <span class="text-success"><?= $validationAuteur ?></span>
                 <?php endif; ?>
@@ -234,6 +234,7 @@
             <hr class="mt-4">
             <div class="col-12 mb-5">
                 <h3 class="text-white mt-4">Supprimer une citation :</h3>
+                <?php var_dump($_POST) ?>
                 <form action="" method="POST">
                     <table class="table table-dark border border-secondary">
                         <thead>
@@ -245,9 +246,9 @@
                         <tbody>
                             <tr>
                                 <td colspan="1">
-                                    <select name="select_auteur" id="select_aut">
+                                    <select name="select_auteur" id="select_auteur">
                                         <?php foreach ($resultats_auteurs as $auteur) : ?>
-                                            <option class="w-100" value="<?= $auteur['id_auteur'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
+                                            <option class="w-100" value="<?= $auteur['nom'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <?php if (isset($error['select_auteur'])) : ?>
@@ -255,8 +256,7 @@
                                     <?php endif; ?>
                                 </td>
                                 <td colspan="1">
-                                    <select name="select_citation" id="select_cita">
-                                        <option class="w-100" value=""></option>
+                                    <select name="select_cita" id="select_citation">
                                     </select>
                                     <?php if (isset($error['select_citation'])) : ?>
                                         <span class="text-danger"><?= $error['select_citation'] ?></span>

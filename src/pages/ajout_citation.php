@@ -154,7 +154,10 @@ if (isset($_SESSION['user_id'])) {
         }
     }
 
-    if(isset($_POST['delete_citation'])){
-        
+    if (isset($_POST['delete_citation'])) {
+        $error = [];
+        if (empty($_POST['delete_citation'])) {
+            $error['ID'] = "Veuillez renseigner une citation a supprimer";
+        }
     }
 }
