@@ -17,5 +17,6 @@ Design :
 	-Faire le choix d'une palette de couleur pour le site et changer les variables bootstrap
 	-Rendre le site full responsive
 	-Separer la page Administrateur en 2 Action sur les citations / Action sur les philosophes
+	-PAgination sur la page des citations.
 
 

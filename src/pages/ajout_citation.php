@@ -159,5 +159,12 @@ if (isset($_SESSION['user_id'])) {
         if (empty($_POST['delete_citation'])) {
             $error['ID'] = "Veuillez renseigner une citation a supprimer";
         }
+
+        if(empty($error)){
+            $requete_delete_citation = $dbh->prepare("DELETE FROM citations WHERE id_citations = :id_citations");
+            $requete_delete_citation = $dbh->execute([
+                'id_citations' => $_POST['select_cita']
+            ]);
+        }
     }
 }
