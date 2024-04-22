@@ -31,26 +31,26 @@
             <?php endif ?>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="btn btn-outline-light text-warning mx-2" aria-current="page" href="?page=index">Acceuil</a>
-                    <a class="btn btn-outline-light text-warning mx-2" href="?page=citations">Les citations</a>
-                    <a class="btn btn-outline-light text-warning mx-2" href="?page=auteurs">Les philosophes</a>
+                    <a class="btn border-bottom text-warning mx-2" aria-current="page" href="?page=index">Acceuil</a>
+                    <a class="btn border-bottom text-warning mx-2" href="?page=citations">Les citations</a>
+                    <a class="btn border-bottom text-warning mx-2" href="?page=auteurs">Les philosophes</a>
                     <?php if (!isset($_SESSION['user_id'])) : ?>
-                        <a href="?page=inscription" id="hover" class="btn btn-outline-light text-warning mx-2">Inscription</a>
-                        <a href="?page=connexion" id="hover" class="btn btn-outline-light text-warning mx-2">Connexion</a>
+                        <a href="?page=inscription" id="hover" class="btn border-bottom text-warning mx-2">Inscription</a>
+                        <a href="?page=connexion" id="hover" class="btn border-bottom text-warning mx-2">Connexion</a>
                     <?php endif ?>
                     <?php if (isset($_SESSION['user_id'])) : ?>
-                        <a class="btn btn-outline-light text-warning mx-2" href="?page=compte">Mon compte</a>
+                        <a class="btn border-bottom text-warning mx-2" href="?page=compte">Mon compte</a>
                     <?php endif ?>
                     <?php if (isset($_SESSION['id_droit']) && $_SESSION['id_droit'] == 1) : ?>
-                        <a class="btn btn-outline-light text-warning mx-2" href="?page=ajout_citation">Administrateur</a>
+                        <a class="btn border-bottom text-warning mx-2" href="?page=ajout_citation">Administrateur</a>
                     <?php endif ?>
                     <?php if (isset($_SESSION['user_id'])) : ?>
-                        <a class="btn btn-outline-danger mx-2 text-warning" href="?page=deconnexion">Déconnexion</a>
+                        <a class="btn border-bottom text-danger mx-2" href="?page=deconnexion">Déconnexion</a>
                     <?php endif ?>
                 </div>
             </div>
             <?php if (isset($_SESSION['user_id'])) : ?> <!-- Si la session contient un user_id -->
-                <img src="<?= $_SESSION['img'] ?>" width="75" height="75" class="d-inline-block align-top border-secondary rounded mx-2" alt="">
+                <img src="<?= $_SESSION['img'] ?>" width="75" height="75" class="d-inline-block align-top border-bottom border-left rounded mx-2" alt="">
             <?php endif ?>
         </div>
     </nav>

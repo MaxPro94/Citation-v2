@@ -1,3 +1,21 @@
-1) Mot de passe oublié
+Fonctionnalitées a finir : 
+	-Finir le delete citation niveau Php.
+	-Faire le traitement de l'image pour philosophe
+	-Problème de citation dans les select (Au changement du choix de l'auteur les citations de l'ancien philosophe choisit reste )
 
-2) Envoie d'un e-mail de confirmation a l'inscription
+
+Functionnalitées a faire :
+	-Supprimer un philosophe
+	-Modifier un philosophe
+	-Supprimer un philosophe
+	-Ajouter une image de profil de sont choix
+	-Mot de passe oublié
+	-Envoie d'un e-mail de confirmation a l'inscription
+
+Design : 
+	-Ameliorer la page administrateur
+	-Faire le choix d'une palette de couleur pour le site et changer les variables bootstrap
+	-Rendre le site full responsive
+	-Separer la page Administrateur en 2 Action sur les citations / Action sur les philosophes
+
+

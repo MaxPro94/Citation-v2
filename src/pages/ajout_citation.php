@@ -1,5 +1,5 @@
 <?php
-$title = "Ajouts BDD";
+$title = "Actions BDD";
 session_start();
 if (isset($_SESSION['user_id'])) {
     if ($_SESSION['id_droit'] == 1) {
