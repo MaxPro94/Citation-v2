@@ -7,8 +7,8 @@
                 <?php if (isset($validationUpdateCitation)) : ?>
                     <span class="text-success"><?= $validationUpdateCitation ?></span>
                 <?php endif; ?>
-            <h3 class="text-white mt-4">Ajouter un Philosophe :</h3>
-            <div class="col-12 p-2 border border-top-0 border-bottom-0 border-5 rounded bg-secondary">
+            <h3 class="text-white my-3">Ajouter un Philosophe :</h3>
+            <div class="col-12 px-2 border border-top-0 border-bottom-0 border-5 rounded">
                 <form action="" method="POST">
                     <table class="table table-dark table-striped border border-secondary">
                         <thead>
@@ -94,34 +94,34 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-dark w-100" name="add_auteur">Ajouter</button>
+                    <button class="btn btn-secondary text-light w-100" name="add_auteur">Ajouter</button>
                 </form>
             </div>
             <hr class="mt-4">
-            <h3 class="text-white mt-4">Modifier un philosophe :</h3>
-            <div class="col-12 p-2 border border-top-0 border-bottom-0 border-5 rounded bg-secondary">
-                <h5 class="my-3 mx-2 text-decoration-underline text-light">D'abord choisissez le philosophe a modifier :</h5>
+            <h3 class="text-white my-3">Modifier un philosophe :</h3>
+            <div class="col-12 px-2 border border-top-0 border-bottom-0 border-5 rounded">
+                <h5 class="mx-2 text-decoration-underline text-light">D'abord choisissez le philosophe a modifier :</h5>
                 <form action="" method="POST">
-                    <table class="table table-dark table-striped" id="update_cit">
+                    <table class="table table-dark table-striped border border-secondary" id="update_cit">
                         <thead>
-                                <tr>
-                                    <th class="text-center">Choix du philosophe :</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-center">
-                                        <select name="select_update_auteur" class="text-truncate text-center justify-content-center">
-                                            <?php foreach ($resultats_auteurs as $auteur) : ?>
-                                                <option class="text-truncate" value="<?= $auteur['nom'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                        <?php if (isset($error['select_update_auteur'])) : ?>
-                                            <span class="text-danger"><?= $error['select_update_auteur'] ?></span>
-                                        <?php endif; ?>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <tr>
+                                <th class="text-center">Choix du philosophe :</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">
+                                    <select name="select_update_auteur" class="text-truncate text-center justify-content-center">
+                                        <?php foreach ($resultats_auteurs as $auteur) : ?>
+                                            <option class="text-truncate" value="<?= $auteur['nom'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <?php if (isset($error['select_update_auteur'])) : ?>
+                                        <span class="text-danger"><?= $error['select_update_auteur'] ?></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                     <h5 class="mt-2 mx-2 text-decoration-underline text-light">Modifier les données du philosophe choisit :</h5>
                     <table class="table table-dark table-striped border border-secondary" id="temp_modif_cit">
@@ -206,12 +206,12 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button type="submit" class="btn btn-dark w-100" name="submit_update_citation">Modifier</button>
+                    <button type="submit" class="btn btn-secondary text-light w-100" name="submit_update_citation">Modifier</button>
                 </form>
             </div>
             <hr class="mt-4">
-            <h3 class="text-white mt-4">Supprimer un philosophe :</h3>
-            <div class="col-12 p-2 border border-top-0 border-bottom-0 border-5 rounded bg-secondary">
+            <h3 class="text-white my-3">Supprimer un philosophe :</h3>
+            <div class="col-12 px-2 border border-top-0 border-bottom-0 border-5 rounded">
                 <form action="" method="POST">
                     <table class="table table-dark table-striped border border-secondary">
                         <thead>
@@ -234,12 +234,12 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-dark w-100" name="delete_citation">Supprimer</button>
+                    <button class="btn btn-secondary text-light w-100" name="delete_citation">Supprimer</button>
                 </form>
             </div>
             <hr class="mt-4">
-            <h3 class="text-white mt-4">Ajouter une citation :</h3>
-            <div class="col-12 p-2 border border-top-0 border-bottom-0 border-5 rounded bg-secondary">
+            <h3 class="text-white my-3">Ajouter une citation :</h3>
+            <div class="col-12 px-2 border border-top-0 border-bottom-0 border-5 rounded">
                 <form action="" method="POST">
                     <table class="table table-dark table-striped border border-secondary">
                         <thead>
@@ -291,13 +291,13 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-dark w-100" name="add_citation">Ajouter</button>
+                    <button class="btn btn-secondary text-light w-100" name="add_citation">Ajouter</button>
                 </form>
             </div>
             <hr class="mt-4">
-            <h3 class="text-white mt-4">Modifier une citation :</h3>
-            <div class="col-12 p-2 border border-top-0 border-bottom-0 border-5 rounded bg-secondary">
-                <h5 class="text-white mt-4 mx-2 text-decoration-underline">D'abord choisissez la citation a modifier :</h5>
+            <h3 class="text-white my-3">Modifier une citation :</h3>
+            <div class="col-12 px-2 border border-top-0 border-bottom-0 border-5 rounded">
+                <h5 class="text-white mx-2 text-decoration-underline">D'abord choisissez la citation a modifier :</h5>
                 <form action="" method="POST">
                     <table class="table table-dark table-striped border border-secondary" id="update_cit">
                         <thead>
@@ -387,12 +387,12 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button type="submit" class="btn btn-dark w-100" name="submit_update_citation">Modifier</button>
+                    <button type="submit" class="btn btn-secondary text-light w-100" name="submit_update_citation">Modifier</button>
                 </form>
             </div>
             <hr class="mt-4">
-            <h3 class="text-white mt-4">Supprimer une citation :</h3>
-            <div class="col-12 p-2 mb-4 border border-top-0 border-bottom-0 border-5 rounded bg-secondary">
+            <h3 class="text-white my-3">Supprimer une citation :</h3>
+            <div class="col-12 px-2 mb-4 border border-top-0 border-bottom-0 border-5 rounded">
                 <form action="" method="POST">
                     <table class="table table-dark table-striped border border-secondary">
                         <thead>
@@ -433,7 +433,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-dark w-100" name="delete_citation">Supprimer</button>
+                    <button class="btn btn-secondary text-light w-100" name="delete_citation">Supprimer</button>
                 </form>
             </div>
         </div>

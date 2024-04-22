@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="col my-5">
-            <table class="mx-5 mb-5 text-light">
+            <table class="mx-5 mt-5 text-light">
                 <thead>
                     <tr>
                         <th scope="row" class="display-5 py-5"><?= $nomAuteur ?></th>
@@ -34,19 +34,23 @@
                             <?php if (in_fav($id_citation, $resultat_fav)) : ?>
                                 <td>
                                     <form class="d-inline" method="POST">
-                                        <button type="submit" name="delete_fav" class="btn" value="<?= $id_citation ?>"> <span class="material-symbols-outlined text-warning py-2">
+                                        <button type="submit" name="delete_fav" class="btn" value="<?= $id_citation ?>">
+                                            <span class="material-symbols-outlined text-warning py-2">
                                                 stars
-                                            </span></button>
-                                </td>
-                                </form>
+                                            </span>
+                                        </button>
+                                    </form>
+                                </td>          
                             <?php else : ?>
                                 <td>
                                     <form class="d-inline" method="POST">
-                                        <button type="submit" name="submit_fav" class="btn d-inline" value="<?= $id_citation ?>"><span class="material-symbols-outlined text-warning py-2">
+                                        <button type="submit" name="submit_fav" class="btn d-inline" value="<?= $id_citation ?>">
+                                            <span class="material-symbols-outlined text-warning py-2">
                                                 star
-                                            </span></button>
-                                </td>
-                                </form>
+                                            </span>
+                                        </button>
+                                    </form>
+                                </td>                               
                             <?php endif ?>
                         <?php endif ?>
                     </tr>

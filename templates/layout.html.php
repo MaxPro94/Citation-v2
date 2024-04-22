@@ -27,25 +27,25 @@
                 <?php endif; ?>
             <?php endif; ?>
             <?php if (!isset($_SESSION['user_id'])) : ?> <!-- Si la session contient un user_id -->
-                <a class="mx-5 nav-link text-secondary" href="?page=connexion">Crée-toi un compte pour enregistrer tes citations favorites et bien plus !</a>
+                <a class="mx-3 mt-3 text-decoration-none blockquote-footer" href="?page=connexion">Crée-toi un compte pour enregistrer tes citations favorites et bien plus !</a>
             <?php endif ?>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="btn border-bottom text-warning mx-2" aria-current="page" href="?page=index">Acceuil</a>
-                    <a class="btn border-bottom text-warning mx-2" href="?page=citations">Les citations</a>
-                    <a class="btn border-bottom text-warning mx-2" href="?page=auteurs">Les philosophes</a>
+                    <a class="btn btn-outline-primary border-top-0 border-end-0 text-light mx-3" aria-current="page" href="?page=index">Accueil</a>
+                    <a class="btn btn-outline-primary border-top-0 border-end-0 text-light mx-3" href="?page=citations">Les citations</a>
+                    <a class="btn btn-outline-primary border-top-0 border-end-0 text-light mx-3" href="?page=auteurs">Les philosophes</a>
                     <?php if (!isset($_SESSION['user_id'])) : ?>
-                        <a href="?page=inscription" id="hover" class="btn border-bottom text-warning mx-2">Inscription</a>
-                        <a href="?page=connexion" id="hover" class="btn border-bottom text-warning mx-2">Connexion</a>
+                        <a href="?page=inscription" id="hover" class="btn btn-outline-primary border-top-0 border-end-0 text-light mx-3">Inscription</a>
+                        <a href="?page=connexion" id="hover" class="btn btn-outline-primary border-top-0 border-end-0 text-light mx-3">Connexion</a>
                     <?php endif ?>
                     <?php if (isset($_SESSION['user_id'])) : ?>
-                        <a class="btn border-bottom text-warning mx-2" href="?page=compte">Mon compte</a>
+                        <a class="btn btn-outline-primary border-top-0 border-end-0 text-light mx-3" href="?page=compte">Mon compte</a>
                     <?php endif ?>
                     <?php if (isset($_SESSION['id_droit']) && $_SESSION['id_droit'] == 1) : ?>
-                        <a class="btn border-bottom text-warning mx-2" href="?page=ajout_citation">Administrateur</a>
+                        <a class="btn btn-outline-primary border-top-0 border-end-0 text-light mx-3" href="?page=ajout_citation">Administrateur</a>
                     <?php endif ?>
                     <?php if (isset($_SESSION['user_id'])) : ?>
-                        <a class="btn border-bottom text-danger mx-2" href="?page=deconnexion">Déconnexion</a>
+                        <a class="btn btn-outline-primary border-top-0 border-end-0 text-danger mx-3" href="?page=deconnexion">Déconnexion</a>
                     <?php endif ?>
                 </div>
             </div>

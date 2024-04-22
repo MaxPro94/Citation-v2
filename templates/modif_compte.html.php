@@ -9,7 +9,7 @@
                     <?php if (isset($erreurs['prenom'])) : ?>
                         <span class="my-1 text-danger"><?= $erreurs['prenom'] ?></span>
                     <?php endif; ?>
-                    <button name="submit_modif_prenom" class="btn btn-warning w-100 my-3" type="submit">Modifier le prénom</button>
+                    <button name="submit_modif_prenom" class="btn btn-primary w-100 my-3" type="submit">Modifier le prénom</button>
                 </div>
                 <div class="mb-3">
                     <label for="disabledTextInput" class="form-label">Nom :</label>
@@ -17,7 +17,7 @@
                     <?php if (isset($erreurs['nom'])) : ?>
                         <span class="my-1 text-danger"><?= $erreurs['nom'] ?></span>
                     <?php endif; ?>
-                    <button name="submit_modif_nom" class="btn btn-warning w-100 my-3" type="submit">Modifier le nom</button>
+                    <button name="submit_modif_nom" class="btn btn-primary w-100 my-3" type="submit">Modifier le nom</button>
                 </div>
                 <div class="mb-3">
                     <label for="disabledTextInput" class="form-label">Pseudonyme :</label>
@@ -25,7 +25,7 @@
                     <?php if (isset($erreurs['pseudo'])) : ?>
                         <span class="my-1 text-danger"><?= $erreurs['pseudo'] ?></span>
                     <?php endif; ?>
-                    <button name="submit_modif_pseudo" class="btn btn-warning w-100 my-3" type="submit">Modifier le pseudonyme</button>
+                    <button name="submit_modif_pseudo" class="btn btn-primary w-100 my-3" type="submit">Modifier le pseudonyme</button>
                 </div>
                 <div class="mb-3">
                     <label for="disabledTextInput" class="form-label">E-mail :</label>
@@ -33,7 +33,7 @@
                     <?php if (isset($erreurs['mail'])) : ?>
                         <span class="my-1 text-danger"><?= $erreurs['mail'] ?></span>
                     <?php endif; ?>
-                    <button name="submit_modif_mail" class="btn btn-warning w-100 my-3" type="submit">Modifier l'E-mail</button>
+                    <button name="submit_modif_mail" class="btn btn-primary w-100 my-3" type="submit">Modifier l'E-mail</button>
                 </div>
                 <div class="mb-3">
                     <label for="disabledTextInput" class="form-label">Mot de passe :</label>
@@ -44,26 +44,27 @@
                     <?php if (isset($erreurs['pwd_preg'])) : ?>
                         <span class="my-1 text-danger"><?= $erreurs['pwd_preg'] ?></span>
                     <?php endif; ?>
-                    <button name="submit_modif_pwd" class="btn btn-warning w-100 my-3" type="submit">Modifier le mot de passe</button>
+                    <button name="submit_modif_pwd" class="btn btn-primary w-100 my-3" type="submit">Modifier le mot de passe</button>
                 </div>
             </form>
         </div>
-        <hr>
+        <hr class="text-white">
     </div>
-
-    <div class="row">
+    <div class="row d-flex justify-content-center">
         <h2 class="text-center mb-4 text-light">Modification de l'image de profil</h2>
         <?php foreach ($resultat_img_profil as $resultat) : ?>
             <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
                 <div class="card h-100 bg-dark text-light" data-aos="">
                     <img src="<?= $resultat['img'] ?>" class="card-img-top img-fluid" alt="">
                     <div class="card-body">
-                        <h3><?= $resultat['nom'] ?></h3>
-                        <p class="text-center mt-4"><?= $resultat['description'] ?></p>
+                        <h4><?= $resultat['nom'] ?></h4>
+                        <div class="d-flex align-items-center">
+                            <p class="text-center mt-4"><?= $resultat['description'] ?></p>
+                        </div>
                     </div>
-                    <div class="card-footer text-center border-secondary">
+                    <div class="card-footer text-center border-light mx-3">
                         <form method="POST">
-                            <button class="btn btn-warning" name="submit_modif_img" value="<?= $resultat['id_img'] ?>">Choisir</button>
+                            <button class="btn btn-primary" name="submit_modif_img" value="<?= $resultat['id_img'] ?>">Choisir</button>
                         </form>
                     </div>
                 </div>
