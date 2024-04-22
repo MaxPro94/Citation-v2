@@ -5,8 +5,8 @@
                 <img src="<?= $photoAuteur ?>" class="rounded" alt="...">
             </div>
             <hr>
-            <div class="progress mb-5" id="blips">
-                <div class="progress-bar bg-dark progress-bar-striped" role="progressbar">
+            <div class="progress mb-5  border border-dark" id="blips">
+                <div class="progress-bar bg-primary progress-bar-striped border border-light" role="progressbar">
                     <span class="sr-only "></span>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                                             </span>
                                         </button>
                                     </form>
-                                </td>          
+                                </td>
                             <?php else : ?>
                                 <td>
                                     <form class="d-inline" method="POST">
@@ -50,7 +50,7 @@
                                             </span>
                                         </button>
                                     </form>
-                                </td>                               
+                                </td>
                             <?php endif ?>
                         <?php endif ?>
                     </tr>

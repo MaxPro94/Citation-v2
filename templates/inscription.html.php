@@ -8,9 +8,9 @@
                     <label for="Name" class="form-label mx-3">Email :</label>
                     <div class="d-flex aligns-center">
                         <input type="email" class="form-control" id="mail" name="mail" placeholder="name@example.com" required>
-                        <input type="color" id="color_mail" class="form-control form-control-color mx-1 " value="#f8f9fa" title="green">
+                        <input type="color" id="color_mail" class="form-control form-control-color mx-1 " value="#f8f9fa">
                     </div>
-                    <div id="emailHelp" class="form-text text-secondary">Nous ne partagerons jamais votre e-mail avec quelqu'un d'autre.</div>
+                    <div id="emailHelp" class="form-text">Nous ne partagerons jamais votre e-mail avec quelqu'un d'autre.</div>
                     <?php if (!empty($error['mail'])) : ?>
                         <span class="text-danger"><?= $error['mail'] ?></span>
                     <?php endif; ?>
@@ -20,7 +20,7 @@
                     <label for="exampleFormControlInput1" class="form-label mx-3">Nom :</label>
                     <div class="d-flex aligns-center">
                         <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Lastname" required>
-                        <input type="color" id="color_lastname" class="form-control form-control-color mx-1" value="#f8f9fa" title="green">
+                        <input type="color" id="color_lastname" class="form-control form-control-color mx-1" value="#f8f9fa">
                     </div>
                     <?php if (!empty($error['lastname'])) : ?>
                         <span class="text-danger"><?= $error['lastname'] ?></span>
@@ -31,7 +31,7 @@
                     <label for="exampleFormControlInput1" class="form-label mx-3">Prénom :</label>
                     <div class="d-flex aligns-center">
                         <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Firstname" required>
-                        <input type="color" id="color_firstname" class="form-control form-control-color mx-1" value="#f8f9fa" title="green">
+                        <input type="color" id="color_firstname" class="form-control form-control-color mx-1" value="#f8f9fa">
                     </div>
                     <?php if (!empty($error['firstname'])) : ?>
                         <span class="text-danger"><?= $error['firstname'] ?></span>
@@ -42,7 +42,7 @@
                     <label for="exampleFormControlInput1" class="form-label mx-3">Pseudo :</label>
                     <div class="d-flex aligns-center">
                         <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Pseudo" required>
-                        <input type="color" id="color_pseudo" class="form-control form-control-color mx-1" value="#f8f9fa" title="green">
+                        <input type="color" id="color_pseudo" class="form-control form-control-color mx-1" value="#f8f9fa">
                     </div>
                     <?php if (!empty($error['pseudo'])) : ?>
                         <span class="text-danger"><?= $error['pseudo'] ?></span>
@@ -60,7 +60,7 @@
                     <div class="text-center progress-bar progress-bar-striped bg-danger" id="bar" role="progressbar" width="0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                     </div>
                 </div>
-                <div id="pwdHelp" class="form-text text-secondary">Votre mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un caractère spécial et être d'au moins 6 caractères de long.</div>
+                <div class="form-text">Votre mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un caractère spécial et être d'au moins 6 caractères de long.</div>
                 <?php if (!empty($error['pwd'])) : ?>
                     <span class="text-danger"><?= $error['pwd'] ?></span>
                 <?php endif; ?>
@@ -75,10 +75,10 @@
                 <span class="text-danger" id="error_form"></span>
                 <hr>
                 <div class=" d-flex aligns-center justify-content-between">
-                    <button type="submit" class="btn btn-outline-light text-warning" name="submit_inscription" id="submit_inscription">S'inscrire</button>
+                    <button type="submit" class="btn btn-outline-primary border-top-0 border-end-0 border-start-0" name="submit_inscription" id="submit_inscription">S'inscrire</button>
                     <input type="hidden" name="submit_inscription">
                     <div class="d-flex aligns-center">
-                        <a href="?page=index" class="btn btn-outline-light text-warning">Déjà un compte ?</a>
+                        <a href="?page=index" class="btn btn-outline-primary border-top-0 border-end-0 border-start-0">Déjà un compte ?</a>
                     </div>
                 </div>
             </form>

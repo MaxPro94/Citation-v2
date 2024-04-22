@@ -4,7 +4,7 @@
 
     <?php foreach ($resultats as $resultat) : ?>
 
-        <div class="card bg-dark text-white mb-3 my-5 border-bottom-0 border-start-0 border-3 border-light">
+        <div class="card bg-dark text-white mb-3 my-5 border-bottom-0 border-start-0 border-3 border-primary">
             <div class="row">
                 <div class="col-md-4">
                     <img src="<?= $resultat['photo'] ?>" class="img-fluid rounded-start" alt="...">
