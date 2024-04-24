@@ -198,16 +198,16 @@
                                     <?php endif; ?>
                                 </td>
                                 <td colspan="2">
-                                    <textarea name="update_explication_auteur" class="w-100"></textarea>
+                                    <textarea name="update_biographie_auteur" class="w-100"></textarea>
                                     <div class="form-text text-secondary">Une biographie du philosophe (Minimum 400 caractères).</div>
-                                    <?php if (isset($error['update_explication_auteur'])) : ?>
+                                    <?php if (isset($error['update_biographie_auteur'])) : ?>
                                         <span class="text-danger"><?= $error['update_explication_auteur'] ?></span>
                                     <?php endif; ?>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <button type="submit" class="btn btn-secondary text-light w-100" name="submit_update_citation">Modifier</button>
+                    <button type="submit" class="btn btn-secondary text-light w-100" name="submit_update_auteur">Modifier</button>
                 </form>
             </div>
             <hr class="mt-4">

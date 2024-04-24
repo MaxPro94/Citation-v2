@@ -154,6 +154,58 @@ if (isset($_SESSION['user_id'])) {
         }
     }
 
+    if (isset($_POST['submit_update_auteur'])) {
+        $error = [];
+        if (empty($_POST['select_update_auteur']) || !is_numeric($_POST['select_update_auteur'])) {
+            $error['select_update_auteur'] = "Veuillez renseigner un philosophe.";
+        }
+        if (empty($_POST['update_lastname_auteur']) || strlen(trim($_POST['update_lastname_auteur'])) <= 2) {
+            $error['update_lastname_auteur'] = "Veuillez renseigner un nom de plus de 2 caractères.";
+        }
+        if (empty($_POST['update_firstname_auteur'])  || strlen(trim($_POST['update_firstname_auteur'])) <= 2) {
+            $error['update_firstname_auteur'] = "Veuillez renseigner un prénom de plus de deux caractères.";
+        }
+        if (empty($_POST['update_naissance_auteur']) || !is_numeric($_POST['update_naissance_auteur'])) {
+            $error['update_naissance_auteur'] = "Veuillez renseigner une année de naissance.";
+        }
+        if (!empty($_POST['update_deces_auteur']) && !is_numeric($_POST['update_deces_auteur'])) {
+            $error['update_deces_auteur'] = "Veuillez renseigner une année de décés au bon format";
+        }
+        if (empty($_POST['update_picture_auteur'])) {
+            $error['update_picture_auteur'] = "Veuillez renseigner une photo/image";
+        }
+        if (empty($_POST['update_description_auteur']) || strlen(trim($_POST['update_description_auteur'])) <= 250) {
+            $error['update_description_auteur'] = "Veuillez renseigner une description de l'auteur de plus de 250 caractères.";
+        }
+        if (empty($_POST['update_biographie_auteur']) || strlen(trim($_POST['update_biographie_auteur'])) <= 400) {
+            $error['update_biographie_auteur'] = "Veuillez renseigner une biographie de l'auteur de plus de 400 caractères.";
+        }
+
+        $idAuteur = htmlspecialchars($_POST['select_update_auteur']);
+        $lastname = htmlspecialchars($_POST['update_lastname_auteur']);
+        $firstname = htmlspecialchars($_POST['update_firstname_auteur']);
+        $naissance = htmlspecialchars($_POST['update_naissance_auteur']);
+        $picture = htmlspecialchars($_POST['update_picture_auteur']);
+        $description = htmlspecialchars($_POST['update_description_auteur']);
+        $biographie = htmlspecialchars($_POST['update_biographie_auteur']);
+
+        if (empty($error)) {
+            $deces = htmlspecialchars($_POST['update_deces_auteur']);
+
+            $requete_update_auteur = $dbh->prepare("UPDATE auteur SET nom = :nom, prenom = :prenom, description = :description, biographie = :biographie, date_start = :date_start, date_end = :date_end, photo = :photo WHERE id_auteur = :id_auteur");
+            $requete_update_auteur->execute([
+                'nom' => ucfirst($lastname),
+                'prenom' => ucfirst($firstname),
+                'date_start' => $naissance,
+                'date_end' => $deces,
+                'description' => ucfirst($description),
+                'biographie' => ucfirst($biographie),
+                'id_auteur' => $idAuteur,
+                'photo' => $picture
+            ]);
+        }
+    }
+
     if (isset($_POST['delete_citation'])) {
         $error = [];
         if (empty($_POST['select_cita'])) {
