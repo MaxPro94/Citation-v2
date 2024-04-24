@@ -156,15 +156,26 @@ if (isset($_SESSION['user_id'])) {
 
     if (isset($_POST['delete_citation'])) {
         $error = [];
-        if (empty($_POST['delete_citation'])) {
+        if (empty($_POST['select_cita'])) {
             $error['ID'] = "Veuillez renseigner une citation a supprimer";
         }
 
-        if(empty($error)){
+        if (empty($error)) {
             $requete_delete_citation = $dbh->prepare("DELETE FROM citations WHERE id_citations = :id_citations");
-            $requete_delete_citation = $dbh->execute([
+            $requete_delete_citation->execute([
                 'id_citations' => $_POST['select_cita']
             ]);
+
+            $requete_validation_delete = $dbh->prepare("SELECT COUNT() FROM citations WHERE id_citations = :id_citations");
+            $requete_validation_delete->execute([
+                'id_citations' => $_POST['select_cita']
+            ]);
+            $resultat = $requete_validation_delete->fetch();
+            if ($resultat['COUNT'] != 0) {
+                $error['delete'] = "Un problème est survenue lors de la suppression.";
+            } else {
+                $error['delete_ok'] = "La suppression à bien etais effectuer.";
+            }
         }
     }
 }

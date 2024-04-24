@@ -1,12 +1,12 @@
 <?php if ($_SESSION['id_droit'] == 1) : ?>
     <div class="container">
         <div class="row">
-                <?php if (isset($validationAuteur)) : ?>
-                    <span class="text-success"><?= $validationAuteur ?></span>
-                <?php endif; ?>
-                <?php if (isset($validationUpdateCitation)) : ?>
-                    <span class="text-success"><?= $validationUpdateCitation ?></span>
-                <?php endif; ?>
+            <?php if (isset($validationAuteur)) : ?>
+                <span class="text-success"><?= $validationAuteur ?></span>
+            <?php endif; ?>
+            <?php if (isset($validationUpdateCitation)) : ?>
+                <span class="text-success"><?= $validationUpdateCitation ?></span>
+            <?php endif; ?>
             <h3 class="text-white my-3">Ajouter un Philosophe :</h3>
             <div class="col-12 px-2 border border-top-0 border-bottom-0 border-5 rounded">
                 <form action="" method="POST">
@@ -71,7 +71,8 @@
                         <thead>
                             <tr>
                                 <th colspan="3">Description :</th>
-                                <th colspan="3">Biographie :</tr>
+                                <th colspan="3">Biographie :
+                            </tr>
                         </thead>
                         <tbody>
                             <tr>
@@ -86,7 +87,7 @@
                                 <td colspan="3">
                                     <textarea type=" text" class="w-100" name="biographie"></textarea>
                                     <div class="form-text text-secondary">Une presentation bien plus précise du philosophe (entre 350 et 700 caractères).</div>
-                                </th>
+                                    </th>
                                     <?php if (isset($error['biographie'])) : ?>
                                         <span class="text-danger"><?= $error['biographie'] ?></span>
                                     <?php endif; ?>
@@ -111,7 +112,7 @@
                         <tbody>
                             <tr>
                                 <td class="text-center">
-                                    <select name="select_update_auteur" class="text-truncate text-center justify-content-center">
+                                    <select name="select_update_auteur" class="form-select form-select-sm text-center" aria-label=".form-select-sm example">
                                         <?php foreach ($resultats_auteurs as $auteur) : ?>
                                             <option class="text-truncate" value="<?= $auteur['nom'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
                                         <?php endforeach; ?>
@@ -222,7 +223,7 @@
                         <tbody>
                             <tr>
                                 <td colspan="1" class="text-center">
-                                    <select class="text-center">
+                                    <select class="form-select form-select-sm text-center" aria-label=".form-select-sm example">
                                         <?php foreach ($resultats_auteurs as $auteur) : ?>
                                             <option class="w-100" value="<?= $auteur['nom'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
                                         <?php endforeach; ?>
@@ -234,7 +235,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-secondary text-light w-100" name="delete_citation">Supprimer</button>
+                    <button class="btn btn-secondary text-light w-100" name="delete_auteur">Supprimer</button>
                 </form>
             </div>
             <hr class="mt-4">
@@ -251,7 +252,7 @@
                         <tbody>
                             <tr>
                                 <td colspan="1">
-                                    <select name="choix_auteur" id="">
+                                    <select name="choix_auteur" class="form-select form-select-sm text-center" aria-label=".form-select-sm example">
                                         <?php foreach ($resultats_auteurs as $auteur) : ?>
                                             <option value="<?= $auteur['nom'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
                                         <?php endforeach; ?>
@@ -301,42 +302,42 @@
                 <form action="" method="POST">
                     <table class="table table-dark table-striped border border-secondary" id="update_cit">
                         <thead>
-                                <tr>
-                                    <th class="text-center">Choix du philosophe :</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-center">
-                                        <select name="select_auteur" id="select_aut" class="text-truncate text-center justify-content-center">
-                                            <?php foreach ($resultats_auteurs as $auteur) : ?>
-                                                <option class="text-truncate" value="<?= $auteur['nom'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                        <?php if (isset($error['select_auteur'])) : ?>
-                                            <span class="text-danger"><?= $error['select_auteur'] ?></span>
-                                        <?php endif; ?>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <tr>
+                                <th class="text-center">Choix du philosophe :</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">
+                                    <select name="select_auteur" id="select_aut" class="form-select form-select-sm text-center" aria-label=".form-select-sm example">
+                                        <?php foreach ($resultats_auteurs as $auteur) : ?>
+                                            <option class="text-truncate" value="<?= $auteur['nom'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <?php if (isset($error['select_auteur'])) : ?>
+                                        <span class="text-danger"><?= $error['select_auteur'] ?></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                     <table class="table table-dark table-striped border border-secondary rounded">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">Choix de la citation à modifier:</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td colspan="1" class="text-truncate text-center">
-                                        <select class="text-truncate text-center" name="select_citation" id="select_cita">
-                                        </select>
-                                        <?php if (isset($error['select_citation'])) : ?>
-                                            <span class="text-danger"><?= $error['select_citation'] ?></span>
-                                        <?php endif; ?>
-                                    </td>
-                                </tr>
-                            </tbody>      
+                        <thead>
+                            <tr>
+                                <th class="text-center">Choix de la citation à modifier:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="1" class="text-truncate text-center">
+                                    <select class="form-select form-select-sm text-center" aria-label=".form-select-sm example" name="select_citation" id="select_cita">
+                                    </select>
+                                    <?php if (isset($error['select_citation'])) : ?>
+                                        <span class="text-danger"><?= $error['select_citation'] ?></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                     <h5 class="text-white mt-2 mx-2 text-decoration-underline">Modifier les données de la citation choisie :</h5>
                     <table class="table table-dark table-striped border border-secondary" id="temp_modif_cit">
@@ -392,6 +393,15 @@
             </div>
             <hr class="mt-4">
             <h3 class="text-white my-3">Supprimer une citation :</h3>
+            <?php if (isset($error['delete_ok'])) : ?>
+                <span class="text-danger"><?= $error['delete_ok'] ?></span>
+            <?php endif; ?>
+            <?php if (isset($error['delete'])) : ?>
+                <span class="text-danger"><?= $error['delete'] ?></span>
+            <?php endif; ?>
+            <?php if (isset($error['ID'])) : ?>
+                <span class="text-danger"><?= $error['ID'] ?></span>
+            <?php endif; ?>
             <div class="col-12 px-2 mb-4 border border-top-0 border-bottom-0 border-5 rounded">
                 <form action="" method="POST">
                     <table class="table table-dark table-striped border border-secondary">
@@ -403,7 +413,7 @@
                         <tbody>
                             <tr>
                                 <td colspan="1" class="text-center">
-                                    <select name="select_auteur" id="select_auteur" class="text-center">
+                                    <select name="select_auteur" id="select_auteur" class="form-select form-select-sm text-center" aria-label=".form-select-sm example">
                                         <?php foreach ($resultats_auteurs as $auteur) : ?>
                                             <option class="w-100" value="<?= $auteur['nom'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
                                         <?php endforeach; ?>
@@ -424,7 +434,7 @@
                         <tbody>
                             <tr>
                                 <td colspan="1" class="text-center text-truncate">
-                                    <select name="select_cita" id="select_citation" class="text-truncate text-center">
+                                    <select name="select_cita" id="select_citation" class="form-select form-select-sm text-center" aria-label=".form-select-sm example">
                                     </select>
                                     <?php if (isset($error['select_citation'])) : ?>
                                         <span class="text-danger"><?= $error['select_citation'] ?></span>

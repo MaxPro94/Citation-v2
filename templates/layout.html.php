@@ -55,9 +55,6 @@
         </div>
     </nav>
 
-
-
-
     <div>
 
         <?php require "$page.html.php" ?> <!-- Ici nous faisont un appel au nom de la page contenu dans $_GET en y ajoutant le .html afin de récupérer uniquement le fichier qui s'occupe de l'affichage. -->
@@ -67,6 +64,6 @@
 
 
 </body>
-<script src="bootstrap/dist/js/bootstrap.js"></script>
+<script src="bootstrap/dist/js/bootstrap.bundle.js"></script>
 
 </html>
