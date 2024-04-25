@@ -4,8 +4,6 @@ const add_citation = document.querySelector("#citation")
 
 choix_auteur.addEventListener("change", function(){
 
-
-
     fetch("/api.php?action=check-citation&add_auteur=" + this.value)
     .then(function(response){
        return response.json()

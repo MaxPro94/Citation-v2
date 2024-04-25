@@ -1,13 +1,10 @@
 <?php if ($_SESSION['id_droit'] == 1) : ?>
     <div class="container">
         <div class="row">
-            <?php if (isset($validationAuteur)) : ?>
-                <span class="text-success"><?= $validationAuteur ?></span>
-            <?php endif; ?>
-            <?php if (isset($validationUpdateCitation)) : ?>
-                <span class="text-success"><?= $validationUpdateCitation ?></span>
-            <?php endif; ?>
             <h3 class="text-white my-3">Ajouter un Philosophe :</h3>
+            <?php if (isset($validationAddAuteur)) : ?>
+                <span class="text-success"><?= $validationAddAuteur ?></span>
+            <?php endif; ?>
             <div class="col-12 px-2 border border-top-0 border-bottom-0 border-5 rounded">
                 <form action="" method="POST">
                     <table class="table table-dark table-striped border border-secondary">
@@ -15,7 +12,6 @@
                             <tr>
                                 <th scope="col">Nom :</th>
                                 <th scope="col">Prénom :</th>
-                                <th scope="col">Photo :</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,9 +28,19 @@
                                         <span class="text-danger"><?= $error['firstname'] ?></span>
                                     <?php endif; ?>
                                 </td>
-
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-dark table-striped border border-secondary">
+                        <thead>
+                            <tr>
+                                <th scope="col">Photo :</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
                                 <td>
-                                    <input type="file" name="photo">
+                                <input type="file" name="photo" class="text-center">
                                     <?php if (isset($error['photo'])) : ?>
                                         <span class="text-danger"><?= $error['photo'] ?></span>
                                     <?php endif; ?>
@@ -100,6 +106,9 @@
             </div>
             <hr class="mt-4">
             <h3 class="text-white my-3">Modifier un philosophe :</h3>
+            <?php if (isset($validationUpdateAuteur)) : ?>
+                <span class="text-danger"><?= $validationUpdateAuteur ?></span>
+            <?php endif; ?>
             <div class="col-12 px-2 border border-top-0 border-bottom-0 border-5 rounded">
                 <h5 class="mx-2 text-decoration-underline text-light">D'abord choisissez le philosophe a modifier :</h5>
                 <form action="" method="POST">
@@ -112,9 +121,9 @@
                         <tbody>
                             <tr>
                                 <td class="text-center">
-                                    <select name="select_update_auteur" class="form-select form-select-sm text-center" aria-label=".form-select-sm example">
+                                    <select name="select_update_auteur" id="auteur_to_update" class="form-select form-select-sm text-center" aria-label=".form-select-sm example">
                                         <?php foreach ($resultats_auteurs as $auteur) : ?>
-                                            <option class="text-truncate" value="<?= $auteur['nom'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
+                                            <option class="text-truncate" value="<?= $auteur['id_auteur'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <?php if (isset($error['select_update_auteur'])) : ?>
@@ -135,13 +144,13 @@
                         <tbody id="tbody_nb">
                             <tr>
                                 <td>
-                                    <input name="update_lastname_auteur" type="text" value="">
+                                    <input name="update_lastname_auteur" id="update_lastname_auteur" type="text" value="">
                                     <?php if (isset($error['update_lastname_auteur'])) : ?>
                                         <span class="text-danger"><?= $error['update_lastname_auteur'] ?></span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <input name="update_firstname_auteur" type="text" value="">
+                                    <input name="update_firstname_auteur" id="update_firstname_auteur" type="text" value="">
                                     <?php if (isset($error['update_firstname_auteur'])) : ?>
                                         <span class="text-danger"><?= $error['update_firstname_auteur'] ?></span>
                                     <?php endif; ?>
@@ -152,30 +161,40 @@
                     <table class="table table-dark table-striped border border-secondary">
                         <thead>
                             <tr>
+                                <th>Photo :</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">
+                                    <input name="update_picture_auteur" id="update_picture_auteur" type="file" value="">
+                                    <?php if (isset($error['update_picture_auteur'])) : ?>
+                                        <span class="text-danger"><?= $error['update_picture_auteur'] ?></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-dark table-striped border border-secondary">
+                        <thead>
+                            <tr>
                                 <th>Naissance:</th>
                                 <th>Décés :</th>
-                                <th>Photo :</th>
                             </tr>
                         </thead>
                         <tbody id="tbody_nb">
                             <tr>
                                 <td>
-                                    <input name="update_naissance_auteur" type="number" value="">
+                                    <input name="update_naissance_auteur" id="update_naissance_auteur" type="number" value="">
                                     <?php if (isset($error['update_naissance_auteur'])) : ?>
                                         <span class="text-danger"><?= $error['update_naissance_auteur'] ?></span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <input name="update_deces_auteur" type="number" value="">
+                                    <input name="update_deces_auteur" id="update_deces_auteur" type="number" value="">
                                     <div id="emailHelp" class="form-text text-secondary">La date de décés n'est pas obligatoire.</div>
                                     <?php if (isset($error['update_deces_auteur'])) : ?>
                                         <span class="text-danger"><?= $error['update_deces_auteur'] ?></span>
-                                    <?php endif; ?>
-                                </td>
-                                <td>
-                                    <input name="update_picture_auteur" type="file" value="">
-                                    <?php if (isset($error['update_picture_auteur'])) : ?>
-                                        <span class="text-danger"><?= $error['update_picture_auteur'] ?></span>
                                     <?php endif; ?>
                                 </td>
                             </tr>
@@ -191,14 +210,14 @@
                         <tbody>
                             <tr>
                                 <td colspan="1">
-                                    <textarea name="update_description_auteur" class="w-100"></textarea>
+                                    <textarea name="update_description_auteur" id="update_description_auteur" class="w-100"></textarea>
                                     <div class="form-text text-secondary">Une courte presentation du philosophe (Minimum 250 caractères).</div>
                                     <?php if (isset($error['update_description_auteur'])) : ?>
                                         <span class="text-danger"><?= $error['update_description_auteur'] ?></span>
                                     <?php endif; ?>
                                 </td>
                                 <td colspan="2">
-                                    <textarea name="update_biographie_auteur" class="w-100"></textarea>
+                                    <textarea name="update_biographie_auteur" id="update_biographie_auteur" class="w-100"></textarea>
                                     <div class="form-text text-secondary">Une biographie du philosophe (Minimum 400 caractères).</div>
                                     <?php if (isset($error['update_biographie_auteur'])) : ?>
                                         <span class="text-danger"><?= $error['update_explication_auteur'] ?></span>
@@ -212,6 +231,12 @@
             </div>
             <hr class="mt-4">
             <h3 class="text-white my-3">Supprimer un philosophe :</h3>
+            <?php if (isset($validationDeleteAuteur)) : ?>
+                <span class="text-success"><?= $validationDeleteAuteur ?></span>
+            <?php endif; ?>
+            <?php if (isset($error['delete_auteur'])) : ?>
+                <span class="text-danger"><?= $error['delete_auteur'] ?></span>
+            <?php endif; ?>
             <div class="col-12 px-2 border border-top-0 border-bottom-0 border-5 rounded">
                 <form action="" method="POST">
                     <table class="table table-dark table-striped border border-secondary">
@@ -223,23 +248,29 @@
                         <tbody>
                             <tr>
                                 <td colspan="1" class="text-center">
-                                    <select class="form-select form-select-sm text-center" aria-label=".form-select-sm example">
+                                    <select class="form-select form-select-sm text-center" name="auteur_to_delete" aria-label=".form-select-sm example">
                                         <?php foreach ($resultats_auteurs as $auteur) : ?>
-                                            <option class="w-100" value="<?= $auteur['nom'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
+                                            <option class="w-100" value="<?= $auteur['id_auteur'] ?>"><?= $auteur['nom'] . ' ' . $auteur['prenom'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
-                                    <?php if (isset($error['select_auteur'])) : ?>
-                                        <span class="text-danger"><?= $error['select_auteur'] ?></span>
+                                    <?php if (isset($error['auteur_to_delete'])) : ?>
+                                        <span class="text-danger"><?= $error['auteur_to_delete'] ?></span>
                                     <?php endif; ?>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-secondary text-light w-100" name="delete_auteur">Supprimer</button>
+                    <button class="btn btn-secondary text-light w-100" name="submit_delete_auteur">Supprimer</button>
                 </form>
             </div>
             <hr class="mt-4">
             <h3 class="text-white my-3">Ajouter une citation :</h3>
+            <?php if (isset($validationAddCitation)) : ?>
+                <span class="text-danger"><?= $validationAddCitation ?></span>
+            <?php endif; ?>
+            <?php if (isset($error['addCita'])) : ?>
+                <span class="text-danger"><?= $error['addCita'] ?></span>
+            <?php endif; ?>
             <div class="col-12 px-2 border border-top-0 border-bottom-0 border-5 rounded">
                 <form action="" method="POST">
                     <table class="table table-dark table-striped border border-secondary">
@@ -297,6 +328,9 @@
             </div>
             <hr class="mt-4">
             <h3 class="text-white my-3">Modifier une citation :</h3>
+            <?php if (isset($validationUpdateCitation)) : ?>
+                <span class="text-success"><?= $validationUpdateCitation ?></span>
+            <?php endif; ?>
             <div class="col-12 px-2 border border-top-0 border-bottom-0 border-5 rounded">
                 <h5 class="text-white mx-2 text-decoration-underline">D'abord choisissez la citation a modifier :</h5>
                 <form action="" method="POST">
@@ -449,4 +483,5 @@
         </div>
     </div>
     <script src="assets/js/check_citation.js"></script>
+    <script src="assets/js/check_auteur.js"></script>
 <?php endif; ?>
