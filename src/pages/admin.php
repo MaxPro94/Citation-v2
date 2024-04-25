@@ -1,5 +1,5 @@
 <?php
-$title = "Actions BDD";
+$title = "Administrateur";
 session_start();
 
 // Ajout d'un philosophe.
@@ -52,7 +52,7 @@ if (isset($_SESSION['user_id'])) {
             $photo = htmlspecialchars($_POST['photo']);
             $naissance = $_POST['naissance'];
 
-            if(!empty($mort)){
+            if (!empty($mort)) {
                 $requete = $dbh->prepare("INSERT INTO auteur (nom, prenom, description, biographie, date_start, date_end, photo) VALUES (:nom, :prenom, :description, :biographie, :date_start, :date_end, :photo)");
                 $requete->execute([
                     'nom' => htmlspecialchars($name),
@@ -66,11 +66,10 @@ if (isset($_SESSION['user_id'])) {
 
                 if ($dbh->lastInsertID()) {
                     $validationAddAuteur = "L'ajout a bien etais effectuer !";
-
                 }
             }
 
-            if(empty($mort)){
+            if (empty($mort)) {
                 $requete = $dbh->prepare("INSERT INTO auteur (nom, prenom, description, biographie, date_start, photo) VALUES (:nom, :prenom, :description, :biographie, :date_start, :photo)");
                 $requete->execute([
                     'nom' => htmlspecialchars($name),
@@ -88,8 +87,8 @@ if (isset($_SESSION['user_id'])) {
         }
     }
 
-       // Modification d'un philosophe.
-       if (isset($_POST['submit_update_auteur'])) {
+    // Modification d'un philosophe.
+    if (isset($_POST['submit_update_auteur'])) {
         $error = [];
         if (empty($_POST['select_update_auteur']) || !is_numeric($_POST['select_update_auteur'])) {
             $error['select_update_auteur'] = "Veuillez renseigner un philosophe.";
@@ -181,7 +180,7 @@ if (isset($_SESSION['user_id'])) {
                 'id_auteur' => $id_auteur
             ]);
 
-            if($dbh -> lastInsertID()){
+            if ($dbh->lastInsertID()) {
                 $validationAddCitation = "L'ajout de la citation à bien etais effectuer.";
             } else {
                 $error['addCita'] = "Un problème est survenu lors de l'enregistrement de la citation.";
@@ -192,13 +191,13 @@ if (isset($_SESSION['user_id'])) {
     }
 
     // Suppression d'un philosophe.
-    if(isset($_POST['submit_delete_auteur'])){
-    $error = [];
-        if(empty($_POST['auteur_to_delete']) || !is_numeric($_POST['auteur_to_delete'])){
+    if (isset($_POST['submit_delete_auteur'])) {
+        $error = [];
+        if (empty($_POST['auteur_to_delete']) || !is_numeric($_POST['auteur_to_delete'])) {
             $error['auteur_to_delete'] = "Veuillez renseigner un auteur a supprimer.";
         }
 
-        if(empty($error)){
+        if (empty($error)) {
             $requete_delete_auteur = $dbh->prepare("DELETE FROM auteur WHERE id_auteur = :id_auteur");
             $requete_delete_auteur->execute([
                 'id_auteur' => $_POST['auteur_to_delete']
@@ -210,9 +209,8 @@ if (isset($_SESSION['user_id'])) {
             ]);
             $check_resultat = $check_delete->fetch();
 
-            if($check_resultat['COUNT(id_auteur)'] == 0){
-                $validationDeleteAuteur = "La suppression à bien etais effectuer."; 
-                
+            if ($check_resultat['COUNT(id_auteur)'] == 0) {
+                $validationDeleteAuteur = "La suppression à bien etais effectuer.";
             } else {
                 $error['delete_auteur'] = "Une erreur est survenue lors de la suppression du philosophe";
             }
@@ -267,7 +265,7 @@ if (isset($_SESSION['user_id'])) {
         }
     }
 
- 
+
     // Suppression d'une citation.
     if (isset($_POST['delete_citation'])) {
         $error = [];

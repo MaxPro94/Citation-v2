@@ -11,7 +11,7 @@
     <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
     <!-- Connexion a bootstrap -->
     <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..<link rel=" stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
@@ -44,7 +44,7 @@
                         <a class="btn btn-outline-primary border-top-0 border-end-0 text-light mx-3" href="?page=compte"><i>Mon compte</i></a>
                     <?php endif ?>
                     <?php if (isset($_SESSION['id_droit']) && $_SESSION['id_droit'] == 1) : ?>
-                        <a class="btn btn-outline-primary border-top-0 border-end-0 text-light mx-3" href="?page=ajout_citation"><i>Administrateur</i></a>
+                        <a class="btn btn-outline-primary border-top-0 border-end-0 text-light mx-3" href="?page=admin"><i>Administrateur</i></a>
                     <?php endif ?>
                     <?php if (isset($_SESSION['user_id'])) : ?>
                         <a class="btn btn-outline-primary border-top-0 border-end-0 text-danger mx-3" href="?page=deconnexion"><i>Déconnexion</i></a>
