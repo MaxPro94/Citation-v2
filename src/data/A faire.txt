@@ -12,4 +12,7 @@ Design :
 	-Rendre le site full responsive = 60% de fait
 	-Pagination sur la page des citations.
 
+Problèmes :
+	-Aucun message d'erreur lors des soucis de connexion
+
 
