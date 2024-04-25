@@ -18,29 +18,30 @@
             <h1 class="text-light py-3 mt-2">Vos citations favorites :</h1>
             <?php if (!empty($resultat_fav)) : ?>
                 <?php foreach ($resultat_fav as $fav) : ?>
-                    <div class="card bg-dark text-light mb-3 my-4 border">
-                        <div class="card-header">
-                            <h5 class="card-title"><?= $fav['prenom'] . ' ' . $fav['nom'] ?></h5>
+                    <div class="card bg-dark text-light mb-3 my-5 border">
+                        <div class="card-header border-primary mx-3">
+                            <h5 class="card-title">" <?= $fav['citation'] ?> "</h5>
                         </div>
-                        <div class="card-body border">
-                            <p><?= $fav['citation'] ?></p>
-                            <br>
+                        <div class="card-body">
                             <p class="card-text"><?= $fav['explication'] ?></p>
-                            <?php if (isset($_SESSION['user_id'])) : ?>
-                                <?php if (in_fav($fav['id_citations'], $resultat_fav)) : ?>
-                                    <form method="POST">
-                                        <button type="submit" name="delete_fav" class="btn p-0 m-0" value="<?= $fav['id_citations'] ?>"> <span class="material-symbols-outlined text-warning">
-                                                stars
-                                            </span></button>
-                                    </form>
-                                <?php else : ?>
-                                    <form method="POST">
-                                        <button type="submit" name="submit_fav" class="btn p-0 m-0" value="<?= $fav['id_citations'] ?>"><span class="material-symbols-outlined text-warning">
-                                                star
-                                            </span></button>
-                                    </form>
+                            <div class="d-flex justify-content-between">
+                                <p class="blockquote-footer mx-3 mt-2"><i><?= $fav['prenom'] . ' ' . $fav['nom'] ?></i></p>
+                                <?php if (isset($_SESSION['user_id'])) : ?>
+                                    <?php if (in_fav($fav['id_citations'], $resultat_fav)) : ?>
+                                        <form method="POST">
+                                            <button type="submit" name="delete_fav" class="btn p-0 m-0" value="<?= $fav['id_citations'] ?>"> <span class="material-symbols-outlined text-warning">
+                                                    stars
+                                                </span></button>
+                                        </form>
+                                    <?php else : ?>
+                                        <form method="POST">
+                                            <button type="submit" name="submit_fav" class="btn p-0 m-0" value="<?= $fav['id_citations'] ?>"><span class="material-symbols-outlined text-warning">
+                                                    star
+                                                </span></button>
+                                        </form>
+                                    <?php endif ?>
                                 <?php endif ?>
-                            <?php endif ?>
+                            </div>
                         </div>
                     </div>
                 <?php endforeach ?>

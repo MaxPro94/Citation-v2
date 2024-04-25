@@ -5,12 +5,12 @@
         <hr>
         <div class="card bg-dark text-light mb-3 my-5 border">
             <div class="card-header border-primary mx-3">
-                <h5 class="card-title">"<?= $resultat['citation'] ?>"</h5>
+                <h5 class="card-title">" <?= $resultat['citation'] ?> "</h5>
             </div>
             <div class="card-body">
                 <p class="card-text"><?= $resultat['explication'] ?></p>
                 <div class="d-flex justify-content-between">
-                    <p class="blockquote-footer mt-2"><i><?= $resultat['prenom'] . ' ' . $resultat['nom'] ?></i></p>
+                    <p class="blockquote-footer mx-3 mt-2"><i><?= $resultat['prenom'] . ' ' . $resultat['nom'] ?></i></p>
                     <?php if (isset($_SESSION['user_id'])) : ?>
                         <?php if (in_fav($resultat['id_citations'], $resultat_fav)) : ?>
                             <form method="POST">

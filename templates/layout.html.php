@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <?php if (empty($_GET) || $_GET == 'index') : ?>
                 <?php if (isset($_SESSION['user_id'])) : ?> <!-- Si la session contient un user_id -->
-                    <a class="navbar-brand text-white ml-4">Well, hello <?= $_SESSION['name'] ?></a>
+                    <a class="navbar-brand text-white ml-4">Well, hello <?= htmlspecialchars_decode($_SESSION['name']) ?></a>
                 <?php endif ?>
                 <?php if (!isset($_SESSION['user_id'])) : ?> <!-- Si la session contient un user_id -->
                     <a class="navbar-brand text-white">Well, hello buddy</a>

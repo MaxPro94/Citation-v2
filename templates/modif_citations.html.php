@@ -1,7 +1,9 @@
 <div class="container">
     <div class="row">
-        <div class="col">
-            <h3 class="text-white my-3">Ajouter une citation :</h3>
+        <h1 class="text-white mt-3">Les actions sur les citations :</h1>
+        <hr class="text-light mt-2">
+        <div class="col mt-5">
+            <h3 class="text-white mt-5 mb-3">Ajouter une citation :</h3>
             <?php if (isset($validationAddCitation)) : ?>
                 <span class="text-danger"><?= $validationAddCitation ?></span>
             <?php endif; ?>
@@ -30,7 +32,7 @@
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <input type="number" name="date_citation">
+                                    <input type="number" name="date_citation" class="form-control">
                                     <?php if (isset($error['date_citation'])) : ?>
                                         <span class="text-danger"><?= $error['date_citation'] ?></span>
                                     <?php endif; ?>
@@ -46,13 +48,13 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <textarea type="text" class="w-100" name="citation"></textarea>
+                                    <textarea type="text" class="form-control" name="citation"></textarea>
                                     <?php if (isset($error['citation'])) : ?>
                                         <span class="text-danger"><?= $error['citation'] ?></span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <textarea type="text" class="w-100" name="explication"></textarea>
+                                    <textarea type="text" class="form-control" name="explication"></textarea>
                                     <?php if (isset($error['explication'])) : ?>
                                         <span class="text-danger"><?= $error['explication'] ?></span>
                                     <?php endif; ?>
@@ -63,8 +65,7 @@
                     <button class="btn btn-secondary text-light w-100" name="add_citation">Ajouter</button>
                 </form>
             </div>
-            <hr class="mt-4">
-            <h3 class="text-white my-3">Modifier une citation :</h3>
+            <h3 class="text-white mt-5 mb-3">Modifier une citation :</h3>
             <?php if (isset($validationUpdateCitation)) : ?>
                 <span class="text-success"><?= $validationUpdateCitation ?></span>
             <?php endif; ?>
@@ -122,13 +123,13 @@
 
                             <tr>
                                 <td>
-                                    <input name="update_annee" id="annee" type="number" value="">
+                                    <input name="update_annee" class="form-control" id="annee" type="number" value="">
                                     <?php if (isset($error['update_annee'])) : ?>
                                         <span class="text-danger"><?= $error['update_annee'] ?></span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <input name="update_IDauteur" id="IDauteur" type="number" value="">
+                                    <input name="update_IDauteur" class="form-control" id="IDauteur" type="number" value="">
                                     <?php if (isset($error['update_IDauteur'])) : ?>
                                         <span class="text-danger"><?= $error['update_IDauteur'] ?></span>
                                     <?php endif; ?>
@@ -144,14 +145,14 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input name="id_citation" id="id_citation" type="hidden" value="">
+                                    <input name="id_citation" class="form-control" id="id_citation" type="hidden" value="">
                                     <textarea name="update_citation" id="citation" class="w-100"></textarea>
                                     <?php if (isset($error['update_citation'])) : ?>
                                         <span class="text-danger"><?= $error['update_citation'] ?></span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <textarea name="update_explication" id="explication" class="w-100"></textarea>
+                                    <textarea name="update_explication" class="form-control" id="explication" class="w-100"></textarea>
                                     <?php if (isset($error['update_explication'])) : ?>
                                         <span class="text-danger"><?= $error['update_explication'] ?></span>
                                     <?php endif; ?>
@@ -162,8 +163,7 @@
                     <button type="submit" class="btn btn-secondary text-light w-100" name="submit_update_citation">Modifier</button>
                 </form>
             </div>
-            <hr class="mt-4">
-            <h3 class="text-white my-3">Supprimer une citation :</h3>
+            <h3 class="text-white mt-5 mb-3">Supprimer une citation :</h3>
             <?php if (isset($error['delete_ok'])) : ?>
                 <span class="text-danger"><?= $error['delete_ok'] ?></span>
             <?php endif; ?>
@@ -196,7 +196,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <table class="table table-dark table-striped border border-secondary">
+                    <table class="table table-dark table-striped border border-secondary mt-4">
                         <thead>
                             <tr>
                                 <th class="text-center">Choix de la citation :</th>
