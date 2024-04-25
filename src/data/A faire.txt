@@ -9,7 +9,7 @@ Functionnalitées a faire :
 
 Design : 
 	-Faire le choix d'une palette de couleur pour le site et changer les variables bootstrap
-	-Rendre le site full responsive = 60% ed fait
+	-Rendre le site full responsive = 60% de fait
 	-Separer la page Administrateur en 2 Action sur les citations / Action sur les philosophes
 	-Pagination sur la page des citations.
 

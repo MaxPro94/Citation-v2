@@ -1,6 +1,16 @@
 <?php if ($_SESSION['id_droit'] == 1) : ?>
     <div class="container">
         <div class="row">
+            <div class="col-12 my-5 d-flex justify-content-around">
+                <div class="text-center p-3 border border-5 border-primary border-end-0 border-start-0">
+                    <h2 class="text-light">Actions sur les philosophes :</h2>
+                    <a class="btn btn-outline-secondary border-start-0 border-end-0 border-top-0 w-50 text-light mt-3" href="?page=modif_auteurs">Auteurs</a>
+                </div>
+                <div class="text-center p-3 border border-5 border-primary border-end-0 border-start-0">
+                    <h2 class="text-light">Actions sur les citations :</h2>
+                    <a class="btn btn-outline-secondary border-start-0 border-end-0 border-top-0 w-50 text-light mt-3" href="?page=modif_citations">Citations</a>
+                </div>
+            </div>
             <h3 class="text-white my-3">Ajouter un Philosophe :</h3>
             <?php if (isset($validationAddAuteur)) : ?>
                 <span class="text-success"><?= $validationAddAuteur ?></span>
