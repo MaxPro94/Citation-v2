@@ -5,12 +5,10 @@ Fonctionnalitées a finir :
 Functionnalitées a faire :
 	-Ajouter une image de profil de sont choix
 	-Mot de passe oublié
-	-Envoie d'un e-mail de confirmation a l'inscription (Aucun mail recu je ne comprend pas)
 
 Design : 
 	-Faire le choix d'une palette de couleur pour le site et changer les variables bootstrap
 	-Rendre le site full responsive -> 60% de fait
-	-Pagination sur la page des citations.
 
 Problèmes :
 

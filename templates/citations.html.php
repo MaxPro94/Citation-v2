@@ -30,27 +30,17 @@
             </div>
         </div>
     <?php endforeach ?>
-    <div class="">
-        <nav aria-label="Page navigation ">
-            <ul class="pagination justify-content-center">
-                <li class="page-item <?= $currentPage - 1 <= 0 ? 'disabled' : '' ?>">
-                    <a class="page-link" href="<?= !empty($search) ? '/?search=' . $search . '&page=' . $currentPage - 1 : '/?page=' . $currentPage - 1 ?>" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
+    <div class="my-2">
+        <div class="d-flex justify-content-center">
+            <ul class="pagination d-flex justify-content-center bg-dark rounded w-50">
+                <?php for($i = 1; $i <= $nbPages; $i++){
+                    $paginationURL = '/?page=citations&pagination=' . $i;
+                ?>
+                <li class="page-item my-1">
+                    <a class="mx-1 rounded btn btn-outline-primary text-light" href="<?= $paginationURL ?>"><?= $i ?></a>
                 </li>
-
-                <?php for ($i = 1; $i <= $nbPages; $i++) : ?>
-                    <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
-                        <a class="page-link" href="<?= !empty($search) ? '/?search=' . $search . '&page=' . $i : '/?page=' . $i ?>"><?= $i ?></a>
-                    </li>
-                <?php endfor; ?>
-
-                <li class="page-item <?= $currentPage + 1 > $nbPages ? 'disabled' : '' ?>">
-                    <a class="page-link" href="<?= !empty($search) ? '/index.php' . $search . '?page=' . $currentPage + 1 : '/?page=' . $currentPage + 1 ?>" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
+                <?php }?>
             </ul>
-        </nav>
+        </div>
     </div>
 </div>

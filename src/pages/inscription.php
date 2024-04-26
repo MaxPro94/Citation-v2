@@ -105,13 +105,21 @@ if (isset($_POST['submit_inscription'])) {
 
                 $message = '
                 <html>
-                    <body>
-                        <table>
+                <body style="background-color: #f4f4f4; margin: 0; padding: 0;">
+                <h1 style="color: #f8f9fa; text-align: center; padding: 10px; background-color: #212529; border-bottom: 1px solid #ddd;">Meta Mindset</h1>
+                    <table style="width: 100%; max-width: 600px; margin: 20px auto; background-color: #fff; border-collapse: collapse; border: 2px solid #cd922d;">
+                        <thead>
                             <tr>
-                                <td><a href="http://citation-v2/?page=confirmation&mail='. urlencode(htmlspecialchars_decode($mail)). '&key=' .$key.'">Confirmez votre compte</a></td>
+                                <th style="color: #f8f9fa; text-align: center; padding: 10px; background-color: #212529; border-bottom: 2px solid #cd922d;">Confirmation de la création de compte</th>
                             </tr>
-                        </table>
-                    </body>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <tdstyle="padding: 10px; border-bottom: 2px solid #cd922d; text-align: center;"><a href="http://citation-v2/?page=confirmation&mail=<?php echo urlencode(htmlspecialchars_decode($mail)); ?>&key=<?php echo $key; ?>" style="text-decoration: none; color: #007bff; font-weight: bold;">Confirmez votre compte</a></tdstyle=>
+                            </tr>
+                        </tbody>
+                    </table>
+                </body>
                 </html>
                 ';
 
@@ -146,7 +154,7 @@ if (isset($_POST['submit_inscription'])) {
                     $_SESSION['img'] = $data_img_user['img'];
 
                     // Nous redirigons l'utilisateur sur la page d'acceuil.
-                    // header('Location: index.php');
+                    header('Location: index.php');
                     exit;
                 } else {
                     $errors['insert'] = "Un problème est survenu lors de l'insertion des données.";

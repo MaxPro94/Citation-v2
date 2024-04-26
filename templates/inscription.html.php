@@ -2,12 +2,6 @@
     <div class="row justify-content-center">
         <div class="col-md-8 mt-2">
             <h1 class="mt-3 text-white">Envie de rejoindre Meta-Mindset ?</h1>
-            <?php if (!empty($error['mail_confirm'])) : ?>
-                <span class="text-danger"><?= $error['mail_confirm'] ?></span>
-            <?php endif; ?>
-            <?php if (isset($validationEmail)) : ?>
-                <span class="text-danger"><?= $validationEmail ?></span>
-            <?php endif; ?>
             <p class="py-1 px-2 text-white"><small>N'hesite plus et inscrit toi !</small></p>
             <form action="" method="POST" id="form" class="p-4 border rounded my-4 bg-dark text-white">
                 <div class="mb-3">
@@ -17,6 +11,8 @@
                         <input type="color" id="color_mail" class="form-control form-control-color mx-1 " value="#f8f9fa">
                     </div>
                     <div id="emailHelp" class="form-text">Nous ne partagerons jamais votre e-mail avec quelqu'un d'autre.</div>
+                    <div class="form-text">Un mail de vérification va vous être envoyer,merci de verifier dans vos spams.</div>
+
                     <?php if (!empty($error['mail'])) : ?>
                         <span class="text-danger"><?= $error['mail'] ?></span>
                     <?php endif; ?>

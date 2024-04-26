@@ -4,17 +4,22 @@ require '../src/actions/check_fav.php';
 
 $title = "Citations";
 
-$nbPerPage = 15;
 
-$requete = $dbh->query("SELECT * FROM citations JOIN auteur WHERE citations.id_auteur = auteur.id_auteur");
-$resultats = $requete->fetchAll();
+
+
 
 $requete_page = $dbh->query("SELECT COUNT(*) as nbCitations FROM citations");
 
+$nbPerPage = 10;
 $nbPages = ceil($requete_page->fetch()['nbCitations'] / $nbPerPage);
-$start = 0;
-$currentPage = 1;
 
+$currentPage = isset($_GET['pagination']) ? intval($_GET['pagination']) : 1;
+$currentPage = max(1, min($currentPage, $nbPages));
+
+$start = ($currentPage - 1 ) * $nbPerPage;
+
+$requete = $dbh->query("SELECT * FROM citations JOIN auteur WHERE citations.id_auteur = auteur.id_auteur LIMIT $start, $nbPerPage");
+$resultats = $requete->fetchAll();
 
 if (isset($_SESSION['user_id'])) {
     if (isset($_POST['submit_fav'])) {
