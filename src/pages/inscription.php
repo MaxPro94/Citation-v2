@@ -69,6 +69,13 @@ if (isset($_POST['submit_inscription'])) {
                 $errors['mail'] = "L'adresse e-mail renseignée existe déjà.";
             } else {
 
+                // Création d'une clef pour la confirmation par e-mail.
+                $longueurKey = 12;
+                $key = "";
+                for($i = 1; $i<$longueurKey; $i++){
+                    $key .= mt_rand(0,9); 
+                }
+
                 //Nettoyage des 3 variables pour n'avoir aucun problème lors de l'eventuel affichage de ceci
                 $pseudo = htmlspecialchars($pseudo);
                 $nom = htmlspecialchars($nom);
@@ -79,7 +86,7 @@ if (isset($_POST['submit_inscription'])) {
                 $salt = "mx1"; // Nous créons un grains de sel a rajouter au mot de pasee de l'utilisteur, afin de pouvoir controler les modifications qui pourrait être apporter a notre BDD sans notre accord.
 
                 $pwd = password_hash($pwd . $salt, PASSWORD_BCRYPT); // Nous hashons le mot de passe et ajoutons le grain de sel avant l'insertion.
-                $requete = $dbh->prepare("INSERT INTO utilisateur (nom, prenom, mail, motdepasse, nom_compte, img_profil, id_droit) VALUES (:nom, :prenom, :mail, :pwd, :pseudo, :img_profil, :id_droit)");
+                $requete = $dbh->prepare("INSERT INTO utilisateur (nom, prenom, mail, motdepasse, nom_compte, img_profil, id_droit, confirmKey) VALUES (:nom, :prenom, :mail, :pwd, :pseudo, :img_profil, :id_droit, :confirmKey)");
                 $requete->execute([
                     'nom' => $nom,
                     'prenom' => $prenom,
@@ -87,8 +94,30 @@ if (isset($_POST['submit_inscription'])) {
                     'pwd' => $pwd,
                     'pseudo' => $pseudo,
                     'img_profil' => 1,
-                    'id_droit' => 2
+                    'id_droit' => 2,
+                    'confirmKey' => $key
                 ]);
+
+                $header = "MIME-Version: 1.0\r\n";
+                $header .= 'From: "Meta-Mindset.com"<support@metamindset.com>' . "\n";
+                $header .= 'Content-type: text/html; charset="utf-8"' . "\n";
+                $header .= 'Content-Transfer-Encoding: 8bit';
+
+                $message = '
+                <html>
+                    <body>
+                        <table>
+                            <tr>
+                                <td><a href="http://citation-v2/?page=confirmation&mail='. urlencode(htmlspecialchars_decode($mail)). '&key=' .$key.'">Confirmez votre compte</a></td>
+                            </tr>
+                        </table>
+                    </body>
+                </html>
+                ';
+
+                mail($mail, "Confirmation de création de compte", $message, $header);
+
+
 
                 if ($dbh->lastInsertID()) { // Si la base de donnée nous retourne bien un id (Le dernier créer) donc le création du compte a bien été effectuer.
 

@@ -9,10 +9,10 @@ Functionnalitées a faire :
 
 Design : 
 	-Faire le choix d'une palette de couleur pour le site et changer les variables bootstrap
-	-Rendre le site full responsive = 60% de fait
+	-Rendre le site full responsive -> 60% de fait
 	-Pagination sur la page des citations.
 
 Problèmes :
-	-Aucun message d'erreur lors des soucis de connexion
+	1-Aucun message d'erreur lors des soucis de connexion
 
 
