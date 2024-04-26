@@ -10,13 +10,13 @@
                 <label for="email" class="form-label text-white">Email:</label>
                 <input required type="email" class="form-control" name="email" id="email" placeholder="Marc-Aurèle@gmail.ro">
                 <?php if (isset($errors['email'])) : ?>
-                    <span><?= $errors['email'] ?></span>
+                    <span class="text-danger"><?= $errors['email'] ?></span>
                 <?php endif ?>
                 <br>
                 <label for="password" class="form-label text-white">Mot de passe:</label>
                 <input required type="password" class="form-control" name="password" id="password">
                 <?php if (isset($errors['password'])) : ?>
-                    <span><?= $errors['password'] ?></span>
+                    <span class="text-danger"><?= $errors['password'] ?></span>
                 <?php endif ?>
                 <hr class="text-light mx-3">
                 <div class="d-flex justify-content-center">

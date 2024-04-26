@@ -99,7 +99,7 @@ if (isset($_POST['submit_inscription'])) {
                 ]);
 
                 $header = "MIME-Version: 1.0\r\n";
-                $header .= 'From: "Meta-Mindset.com"<support@metamindset.com>' . "\n";
+                $header .= 'From:"Meta-Mindset.com"<support@metamindset.com>' . "\n";
                 $header .= 'Content-type: text/html; charset="utf-8"' . "\n";
                 $header .= 'Content-Transfer-Encoding: 8bit';
 
@@ -115,7 +115,11 @@ if (isset($_POST['submit_inscription'])) {
                 </html>
                 ';
 
-                mail($mail, "Confirmation de création de compte", $message, $header);
+                if(mail($mail, "Confirmation de création de compte", $message, $header)){
+                    $validationEmail = "Un e-mail de confirmation vous à ete envoyer";
+                } else {
+                    $error['mail_confirm'] = "Un problème est survenue lors de l'envoi du mail de confirmation.";
+                }
 
 
 
@@ -142,7 +146,7 @@ if (isset($_POST['submit_inscription'])) {
                     $_SESSION['img'] = $data_img_user['img'];
 
                     // Nous redirigons l'utilisateur sur la page d'acceuil.
-                    header('Location: index.php');
+                    // header('Location: index.php');
                     exit;
                 } else {
                     $errors['insert'] = "Un problème est survenu lors de l'insertion des données.";
