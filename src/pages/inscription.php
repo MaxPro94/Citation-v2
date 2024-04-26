@@ -103,25 +103,28 @@ if (isset($_POST['submit_inscription'])) {
                 $header .= 'Content-type: text/html; charset="utf-8"' . "\n";
                 $header .= 'Content-Transfer-Encoding: 8bit';
 
-                $message = '
+                $message = "
                 <html>
-                <body style="background-color: #f4f4f4; margin: 0; padding: 0;">
-                <h1 style="color: #f8f9fa; text-align: center; padding: 10px; background-color: #212529; border-bottom: 1px solid #ddd;">Meta Mindset</h1>
-                    <table style="width: 100%; max-width: 600px; margin: 20px auto; background-color: #fff; border-collapse: collapse; border: 2px solid #cd922d;">
+                    <body style=\"font-family: 'Roboto', sans-serif; background-color: #212529; margin: 0; padding: 0;\">
+                    <h1 style=\"color: #cd922d; text-align: center; padding: 10px; background-color: #212529;\">Meta Mindset</h1>
+                    <hr style=\"margin-left: 50px; margin-right: 50px;\">
+                    <h3 style=\"color: #f8f9fa; text-align: center; padding: 10px; background-color: #212529;\">C'est avec grand plaisir que nous te souhaitons la bienvenue !</h3>
+                    <table style=\"width: 100%; max-width: 600px; margin: 20px auto; border: 2px solid #cd922d; border-radius: 8px;\">
                         <thead>
                             <tr>
-                                <th style="color: #f8f9fa; text-align: center; padding: 10px; background-color: #212529; border-bottom: 2px solid #cd922d;">Confirmation de la création de compte</th>
+                                <th style=\"font-size: 22px; color: #f8f9fa; text-align: center; padding: 10px; background-color: #212529;\">Confirmation de la création de compte</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <tdstyle="padding: 10px; border-bottom: 2px solid #cd922d; text-align: center;"><a href="http://citation-v2/?page=confirmation&mail=<?php echo urlencode(htmlspecialchars_decode($mail)); ?>&key=<?php echo $key; ?>" style="text-decoration: none; color: #007bff; font-weight: bold;">Confirmez votre compte</a></tdstyle=>
+                                <td style=\"color: #cd922d; background-color: #212529; font-size: 18px; padding: 10px; text-align: center;\"><a href=\"http://citation-v2/?page=confirmation&mail=" . urlencode(htmlspecialchars_decode($mail)) . "&key=" . $key . "\" style=\"text-decoration: underline; color: #cd922d; font-weight: bold;\">Cliquez ici pour confirmer votre compte</a></td>
                             </tr>
                         </tbody>
                     </table>
-                </body>
+                    <hr style=\"margin-left: 100px; margin-right: 100px; margin-top: 10px\">
+                    </body>
                 </html>
-                ';
+                ";
 
                 if(mail($mail, "Confirmation de création de compte", $message, $header)){
                     $validationEmail = "Un e-mail de confirmation vous à ete envoyer";
