@@ -72,8 +72,8 @@ if (isset($_POST['submit_inscription'])) {
                 // Création d'une clef pour la confirmation par e-mail.
                 $longueurKey = 12;
                 $key = "";
-                for($i = 1; $i<$longueurKey; $i++){
-                    $key .= mt_rand(0,9); 
+                for ($i = 1; $i < $longueurKey; $i++) {
+                    $key .= mt_rand(0, 9);
                 }
 
                 //Nettoyage des 3 variables pour n'avoir aucun problème lors de l'eventuel affichage de ceci
@@ -126,7 +126,7 @@ if (isset($_POST['submit_inscription'])) {
                 </html>
                 ";
 
-                if(mail($mail, "Confirmation de création de compte", $message, $header)){
+                if (mail($mail, "Confirmation de création de compte", $message, $header)) {
                     $validationEmail = "Un e-mail de confirmation vous à ete envoyer";
                 } else {
                     $error['mail_confirm'] = "Un problème est survenue lors de l'envoi du mail de confirmation.";

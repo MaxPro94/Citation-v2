@@ -11,6 +11,7 @@ Design :
 	-Rendre le site full responsive -> 60% de fait
 
 Problèmes :
+	-E-mail de verification ne marche pas sur le PC Fix
 
 
 
