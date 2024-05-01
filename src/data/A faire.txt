@@ -1,8 +1,10 @@
 Fonctionnalitées a finir : 
 	-Faire le traitement de l'image pour philosophe
+	-Faire le html de la page de confirmation de compte.
 
 
 Functionnalitées a faire :
+	-Question secrète pour changer sont mot de passe. (Explication dans la partie brouillon du cahier de cour)
 	-Ajouter une image de profil de sont choix // ??
 
 Design :

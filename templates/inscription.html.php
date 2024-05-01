@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 mt-2">
             <h1 class="mt-3 text-white">Envie de rejoindre Meta-Mindset ?</h1>
-            <p class="py-1 px-2 text-white"><small>N'hesite plus et inscrit toi !</small></p>
+            <p class="py-1 px-2 text-white"><small>N'hésite plus et inscris-toi !</small></p>
             <form action="" method="POST" id="form" class="p-4 border rounded my-4 bg-dark text-white">
                 <div class="mb-3">
                     <label for="Name" class="form-label mx-3">Email :</label>
@@ -11,7 +11,7 @@
                         <input type="color" id="color_mail" class="form-control form-control-color mx-1 " value="#f8f9fa">
                     </div>
                     <div id="emailHelp" class="form-text">Nous ne partagerons jamais votre e-mail avec quelqu'un d'autre.</div>
-                    <div class="form-text">Un mail de vérification va vous être envoyer,merci de verifier dans vos spams.</div>
+                    <div class="form-text">Un mail de vérification va vous être envoyé, merci de vérifier dans vos spams.</div>
 
                     <?php if (!empty($error['mail'])) : ?>
                         <span class="text-danger"><?= $error['mail'] ?></span>

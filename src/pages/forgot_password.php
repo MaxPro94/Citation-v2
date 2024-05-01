@@ -48,7 +48,7 @@ if (isset($_POST['submit_forgot_password'])) {
                     <body style=\"font-family: 'Roboto', sans-serif; background-color: #212529; margin: 0; padding: 0;\">
                     <h1 style=\"color: #cd922d; text-align: center; padding: 10px; background-color: #212529;\">Meta Mindset</h1>
                     <hr style=\"margin-left: 50px; margin-right: 50px;\">
-                    <h3 style=\"color: #f8f9fa; text-align: center; padding: 10px; background-color: #212529;\">Voici ton nouveau mot de passe :</h3>
+                    <h3 style=\"color: #f8f9fa; text-align: center; padding: 10px; background-color: #212529;\">Voici votre nouveau mot de passe :</h3>
                     <table style=\"width: 100%; max-width: 600px; margin: 20px auto; border: 2px solid #cd922d; border-radius: 8px;\">
                         <thead>
                             <tr>
@@ -67,12 +67,12 @@ if (isset($_POST['submit_forgot_password'])) {
                 ";
 
             if (mail($mail, "Changement de mot de passe", $message, $header)) {
-                $validationEmail = "Un e-mail de vous à ete envoyer";
+                $validationEmail = "Un e-mail vous a été envoyé.";
             } else {
-                $error['mail_confirm'] = "Un problème est survenue lors de l'envoi du mail.";
+                $error['mail_confirm'] = "Un problème est survenu lors de l'envoi du mail.";
             }
         } else {
-            $error['email'] = "Une erreur c'est produit pendant l'envoi de l'email.";
+            $error['email'] = "Une erreur s'est produite pendant l'envoi de l'email.";
         }
     }
 }
