@@ -80,7 +80,7 @@
                     <button type="submit" class="btn btn-outline-primary border-top-0 border-end-0 border-start-0" name="submit_inscription" id="submit_inscription">S'inscrire</button>
                     <input type="hidden" name="submit_inscription">
                     <div class="d-flex aligns-center">
-                        <a href="?page=index" class="btn btn-outline-primary border-top-0 border-end-0 border-start-0">Déjà un compte ?</a>
+                        <a href="?page=connexion" class="btn btn-outline-primary border-top-0 border-end-0 border-start-0">Déjà un compte ?</a>
                     </div>
                 </div>
             </form>

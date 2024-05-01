@@ -27,6 +27,9 @@
                 <a class="btn btn-outline-primary border-top-0 border-end-0 border-start-0 my-2 text-light" href="?page=inscription">Vous n'avez pas de compte ?</a>
             </div>
             <div class="d-flex justify-content-center">
+                <a class="btn btn-outline-primary border-top-0 border-end-0 border-start-0 my-2 text-light" href="?page=forgot_password">Mot de passe oublié ?</a>
+            </div>
+            <div class="d-flex justify-content-center">
                 <a class="btn btn-outline-primary border-top-0 border-end-0 border-start-0 text-light" href="?page=index">Continuer en tant que visiteur.</a>
             </div>
         </div>

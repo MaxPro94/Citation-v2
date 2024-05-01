@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 d-flex justify-content-center align-items-center">
-            <img src="<?= $resultatAuteur['photo'] ?>" class="img-fluid my-4 border border-light border-3 rounded-circle" alt="..." style="width: 50%">
+            <img src="<?= $resultatAuteur['photo'] ?>" class="img-fluid my-4 border border-light border-3 rounded-circle" alt="..." style="width: 60%">
         </div>
         <div>
             <p class="display-8 p-4 mt-5 mx-4 text-center text-light border border-primary rounded"><?= $resultatAuteur['biographie'] ?></p>

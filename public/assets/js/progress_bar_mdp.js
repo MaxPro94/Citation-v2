@@ -15,7 +15,7 @@ function ProgressBar(progressBar){
         if(progressBar.niveau1.test(progressBar.element.value) == true){
             width = 33
             bar.style.width = width + "%"
-            bar.innerHTML = "Acceptable"
+            bar.innerHTML = "Faible"
             progressBar.barre.classList.remove('bg-warning');
             progressBar.barre.classList.add('bg-danger');
         }

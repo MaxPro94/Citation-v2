@@ -3,15 +3,16 @@ Fonctionnalitées a finir :
 
 
 Functionnalitées a faire :
-	-Ajouter une image de profil de sont choix
-	-Mot de passe oublié
+	-Ajouter une image de profil de sont choix // ??
 
-Design : 
+Design :
+	-Rendre le menu burger a la navbar, (je pense qu'il va falloir la refaire.)
 	-Faire le choix d'une palette de couleur pour le site et changer les variables bootstrap
 	-Rendre le site full responsive -> 60% de fait
+	
 
 Problèmes :
-	-E-mail de verification ne marche pas sur le PC Fix
+
 
 
 
