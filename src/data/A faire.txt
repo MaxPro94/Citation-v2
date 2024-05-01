@@ -3,6 +3,7 @@ Fonctionnalitées a finir :
 	-Faire le html de la page de confirmation de compte.
 
 
+
 Functionnalitées a faire :
 	-Question secrète pour changer sont mot de passe. (Explication dans la partie brouillon du cahier de cour)
 	-Ajouter une image de profil de sont choix // ??
@@ -14,6 +15,7 @@ Design :
 	
 
 Problèmes :
+	-Mdp oublier, meme avec un mot de passe inexistant, le code envoi un mail.
 
 
 
