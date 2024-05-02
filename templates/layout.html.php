@@ -18,7 +18,7 @@
 
 <body style="background: linear-gradient(180deg, rgba(33,37,41,1) 10%, rgba(33,37,41,1) 16%, rgba(194,194,194,1) 100%); height: 100%; padding-top: 80px; margin-bottom: 110px">
     <nav class=" navbar navbar-expand-lg fixed-top bg-dark">
-        <img src="assets/img/logo/Logo complet" width="80" height="80" class="d-inline-block align-top border-secondary rounded mx-2" alt="">
+        <img src="assets/img/logo/Logo" width="80" height="40" class="d-inline-block align-top border-secondary rounded mx-2" alt="">
         <div class="container-fluid">
             <?php if (empty($_GET) || $_GET == 'index') : ?>
                 <?php if (isset($_SESSION['user_id'])) : ?> <!-- Si la session contient un user_id -->
