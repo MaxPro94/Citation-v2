@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image" href="assets/img/logo/MetaMind144">
+    <link rel="icon" type="image" href="assets/img/logo/Logo mini.png">
     <title><?= $title ?? '' ?></title>
     <!-- Connexion a CSS, n'oublions pas que la racin est la page inde.php qui ce trouve dans le dossier Public. -->
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
@@ -18,7 +18,7 @@
 
 <body style="background: linear-gradient(180deg, rgba(33,37,41,1) 10%, rgba(33,37,41,1) 16%, rgba(194,194,194,1) 100%); height: 100%; padding-top: 80px; margin-bottom: 110px">
     <nav class=" navbar navbar-expand-lg fixed-top bg-dark">
-        <img src="assets/img/logo/MetaMind144" width="80" height="80" class="d-inline-block align-top border-secondary rounded mx-2" alt="">
+        <img src="assets/img/logo/Logo complet" width="80" height="80" class="d-inline-block align-top border-secondary rounded mx-2" alt="">
         <div class="container-fluid">
             <?php if (empty($_GET) || $_GET == 'index') : ?>
                 <?php if (isset($_SESSION['user_id'])) : ?> <!-- Si la session contient un user_id -->

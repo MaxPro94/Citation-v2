@@ -2,7 +2,7 @@
     <div class="row justify-content-center my-5 py-5">
         <div class="col-12 col-md-4 my-5 py-3 border border-primary rounded bg-dark">
             <div class="d-flex justify-content-center">
-                <img src="assets/img/logo/MetaMind144" width="120" height="120" class="d-inline-block align-top border-secondary rounded mx-2 mb-2" alt="">
+                <img src="assets/img/logo/Logo complet" width="120" height="120" class="d-inline-block align-top border-secondary rounded mx-2 mb-2" alt="">
             </div>
             <div class="form-text text-center"><i>"Cherche tes modèles dans les cieux, puisque tu as un esprit; Ton modèle, c'est le soleil"</i></div>
             <div class="form-text text-center"><i>Hamlet; acte 1, scène 3, William Shakespeare.</i></div>

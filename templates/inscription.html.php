@@ -3,7 +3,7 @@
         <div class="col-md-8 mt-2">
             <h1 class="mt-3 text-white">Envie de rejoindre Meta-Mindset ?</h1>
             <p class="py-1 px-2 text-white"><small>N'hésite plus et inscris-toi !</small></p>
-            <form action="" method="POST" id="form" class="p-4 border rounded my-4 bg-dark text-white">
+            <form action="" method="POST" id="form" class="p-4 border rounded my-4 bg-dark text-white border-secondary">
                 <div class="mb-3">
                     <label for="Name" class="form-label mx-3">Email :</label>
                     <div class="d-flex aligns-center">
@@ -69,18 +69,44 @@
                 <?php if (!empty($error['pwd2'])) : ?>
                     <span class="text-danger"><?= $error['pwd2'] ?></span>
                 <?php endif; ?>
-                <?php if (!empty($error['insert'])) : ?>
-                    <span class="text-danger"><?= $error['insert'] ?></span>
+                <div class="mt-5">
+                    <div class="d-flex justify-content-around">
+                        <label for="exampleFormControlInput1" class="form-label mx-3">Question secrète :</label>
+                        <select name="choice_secret_question" id="secret_question" class="form-select form-select-sm text-center w-50" aria-label=".form-select-sm example" required>
+                            <?php foreach($resultat_question as $question): ?>
+                                <option value="<?= $question['id_question'] ?>" ><?= $question['question'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <input type="text" class="form-control mt-2" id="secret_question_response" name="secret_question_response" required>
+                        <input type="color" id="color_secret_question" class="form-control form-control-color mt-2 mx-1" value="#f8f9fa">
+                    </div>
+
+                    <div class="form-text">Cette question vous sera posée en cas de perte de mot de passe.</div>
+                </div>
+                <?php if (!empty($errors['insert'])) : ?>
+                    <span class="text-danger"><?= $errors['insert'] ?></span>
+                <?php endif; ?>
+                <?php if (isset($errors['insert_question'])) : ?>
+                    <span class="text-danger"><?= $errors['insert_question'] ?></span>
+                <?php endif; ?>
+                <span class="text-danger" id="error_question"></span><br>
+                <?php if (isset($errors['question'])) : ?>
+                    <span class="text-danger"><?= $errors['question'] ?></span>
+                <?php endif; ?>
+                <?php if (isset($errors['response_question'])) : ?>
+                    <span class="text-danger"><?= $errors['response_question'] ?></span>
                 <?php endif; ?>
                 <span class="text-danger" id="error_pwd"></span><br>
                 <span class="text-danger" id="error_pwd2"></span><br>
                 <span class="text-danger" id="error_form"></span>
                 <hr>
                 <div class=" d-flex aligns-center justify-content-between">
-                    <button type="submit" class="btn btn-outline-primary border-top-0 border-end-0 border-start-0" name="submit_inscription" id="submit_inscription">S'inscrire</button>
+                    <button type="submit" class="btn btn-outline-primary border-top-0 border-end-0 border-start-0 text-light" name="submit_inscription" id="submit_inscription">S'inscrire</button>
                     <input type="hidden" name="submit_inscription">
                     <div class="d-flex aligns-center">
-                        <a href="?page=connexion" class="btn btn-outline-primary border-top-0 border-end-0 border-start-0">Déjà un compte ?</a>
+                        <a href="?page=connexion" class="btn btn-outline-primary border-top-0 border-end-0 border-start-0 text-light">Déjà un compte ?</a>
                     </div>
                 </div>
             </form>

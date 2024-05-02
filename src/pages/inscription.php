@@ -1,6 +1,9 @@
 <?php
 $title = "Inscription";
 
+$requete_question_secrete = $dbh->query("SELECT * FROM question_secrete");
+$resultat_question = $requete_question_secrete->fetchAll();
+
 // Si $_POST['submit_login_inscription'] existe (Donc quand l'utilisateur appuie sur le submit)
 if (isset($_POST['submit_inscription'])) {
 
@@ -9,7 +12,7 @@ if (isset($_POST['submit_inscription'])) {
     $errors = [];
 
     // Si tout les $_POST que nous avons besoin existe bien
-    if (isset($_POST['mail']) && isset($_POST['pseudo']) && isset($_POST['lastname']) && isset($_POST['firstname']) && isset($_POST['pwd']) && isset($_POST['pwd2'])) {
+    if (isset($_POST['mail']) && isset($_POST['pseudo']) && isset($_POST['lastname']) && isset($_POST['firstname']) && isset($_POST['pwd']) && isset($_POST['pwd2']) && isset($_POST['choice_secret_question']) && isset($_POST['secret_question_response'])) {
         // On met nos input dans des variable afin d'avoir une syntaxe et un code plus lisible:
         $mail = $_POST['mail'];
         $pseudo = $_POST['pseudo'];
@@ -18,6 +21,9 @@ if (isset($_POST['submit_inscription'])) {
         $pwd = $_POST['pwd'];
         $pwd2 = $_POST['pwd2'];
         $pseudo = $_POST['pseudo'];
+        $question = $_POST['choice_secret_question'];
+        $response_question = $_POST['secret_question_response'];
+        
 
 
         // On peut maintenant verifier que les champs sont remplis correctements.
@@ -42,6 +48,14 @@ if (isset($_POST['submit_inscription'])) {
 
         if (empty($pwd)) {
             $errors['pwd'] = "Veuillez renseigner un mot de passe.";
+        }
+
+        if (empty($question)) {
+            $errors['question'] = "Veuillez selectionner une question secrète.";
+        }
+
+        if (empty($response_question)) {
+            $errors['response_question'] = "Veuillez renseigner une reponse a la question secrète choisie.";
         }
 
         if (empty($pwd2)) {
@@ -98,6 +112,8 @@ if (isset($_POST['submit_inscription'])) {
                     'confirmKey' => $key
                 ]);
 
+
+
                 $header = "MIME-Version: 1.0\r\n";
                 $header .= 'From:"Meta-Mindset.com"<support@metamindset.com>' . "\n";
                 $header .= 'Content-type: text/html; charset="utf-8"' . "\n";
@@ -142,6 +158,18 @@ if (isset($_POST['submit_inscription'])) {
                         'mail' => $mail
                     ]);
                     $data_new_user = $new_user->fetch();
+
+                    $requete_secret_question = $dbh->prepare("INSERT INTO question_utilisateur (id_question, id_utilisateur, response)VALUES (:id_question, :id_utilisateur, :response)");
+                    $requete_secret_question->execute([
+                        'id_question' => $question,
+                        'id_utilisateur' => $data_new_user['id_utilisateur'],
+                        'response' => $response_question
+                    ]);
+
+                    $resultat_question = $requete_secret_question->fetch();
+                    if(!$resultat_question){
+                        $errors['insert_question'] = "Un problème est survenu lors de l'enregistrement de la question secrète.";
+                    }
 
                     $_SESSION['id_droit'] = $data_new_user['id_droit'];
                     $_SESSION['user_id'] = $data_new_user['id_utilisateur'];

@@ -12,10 +12,13 @@ Design :
 	-Rendre le menu burger a la navbar, (je pense qu'il va falloir la refaire.)
 	-Faire le choix d'une palette de couleur pour le site et changer les variables bootstrap
 	-Rendre le site full responsive -> 60% de fait
+	-Rogner l'axe des Y au maximum sur les images de logo afin de prendre le moins de place possible ou bien le transformer en svg
+
 	
 
 Problèmes :
 	-Mdp oublier, meme avec un mot de passe inexistant, le code envoi un mail.
+	-La validation coter js lors de l'inscription ne fonctionne pas comme il faut.
 
 
 
