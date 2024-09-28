@@ -23,7 +23,7 @@ if (isset($_POST['submit_forgot_password'])) {
 
             $caractères = array_merge($Maj, $min, $specialChars);
 
-            for ($i = 0; $i <= 5; $i++) {
+            for ($i = 0; $i < 9; $i++) {
                 shuffle($caractères);
                 $newPassword .= $caractères[array_rand($Maj, 1)];
                 $newPassword .= $caractères[array_rand($min, 1)];
